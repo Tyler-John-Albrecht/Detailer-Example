@@ -767,24 +767,32 @@
       </p>
     </div>
 
-    <!-- Before / After static comparison -->
+    <!-- Before / After drag slider -->
     <div class="max-w-4xl mx-auto reveal">
-      <div class="relative overflow-hidden" style="height:460px;">
-        <img src="Before%20%26%20After.png"
-             alt="Before and After — GT Auto Detail Supply"
-             class="w-full h-full object-cover" style="object-position: center;">
-        <!-- Gold center divider -->
-        <div style="position:absolute; top:0; bottom:0; left:50%; width:2px;
-                    background:#C9A96E; transform:translateX(-50%);
-                    box-shadow:0 0 14px rgba(201,169,110,0.45);
-                    pointer-events:none;"></div>
+      <div class="slider-wrap" id="ba-wrap">
+        <!-- BASE: after image (clean paint) — full width, sits behind everything -->
+        <img src="after.jpg" alt="Paint after correction — mirror finish"
+             class="slider-base" id="ba-before-img"
+             style="object-position: 55% top;">
+        <!-- OVERLAY: before image (swirls) — clipped to left, reveals swirled paint on left side -->
+        <div class="slider-overlay" id="ba-overlay">
+          <img src="before.jpg" alt="Paint before correction — swirl marks visible"
+               id="ba-after-img" style="object-position: 55% top;">
+        </div>
+        <!-- Handle line + circle -->
+        <div class="slider-handle" id="ba-handle">
+          <div class="slider-circle">
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
+              <path d="M5 1L1 7L5 13" stroke="#060608" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 1L17 7L13 13" stroke="#060608" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
         <!-- Labels -->
         <div class="slider-label slider-label-before">BEFORE</div>
         <div class="slider-label slider-label-after">AFTER</div>
-        <!-- Watermark corner cover -->
-        <div style="position:absolute; bottom:0; right:0; width:120px; height:80px;
-                    background:linear-gradient(315deg,rgba(6,6,8,1) 0%,rgba(6,6,8,0.9) 30%,rgba(6,6,8,0) 70%);
-                    pointer-events:none; z-index:8;"></div>
+        <!-- Drag hint -->
+        <div class="slider-hint" id="ba-hint">← DRAG TO COMPARE →</div>
       </div>
       <p class="font-body text-xs text-muted text-center mt-3">
         Real client vehicle · GT Auto Detail Supply · El Cajon, CA
@@ -1630,6 +1638,54 @@
     //   headers: { 'Accept': 'application/json' }
     // });
   });
+
+  // ── Before/After Drag Slider ─────────────────────
+  (function() {
+    const wrap     = document.getElementById('ba-wrap');
+    const overlay  = document.getElementById('ba-overlay');
+    const handle   = document.getElementById('ba-handle');
+    const afterImg = document.getElementById('ba-after-img');
+    const hint     = document.getElementById('ba-hint');
+    if (!wrap) return;
+
+    let dragging = false;
+
+    // After image must be exactly as wide as the container
+    // so both images are pixel-aligned at every drag position
+    function syncWidth() {
+      afterImg.style.width = wrap.offsetWidth + 'px';
+    }
+    syncWidth();
+    window.addEventListener('resize', syncWidth);
+
+    function move(clientX) {
+      const rect = wrap.getBoundingClientRect();
+      let p = ((clientX - rect.left) / rect.width) * 100;
+      p = Math.max(1, Math.min(99, p));
+      overlay.style.width = p + '%';
+      handle.style.left   = p + '%';
+      if (hint) hint.style.opacity = '0';
+    }
+
+    // Mouse
+    wrap.addEventListener('mousedown', e => {
+      dragging = true;
+      move(e.clientX);
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', e => { if (dragging) move(e.clientX); });
+    window.addEventListener('mouseup',   ()  => { dragging = false; });
+
+    // Touch
+    wrap.addEventListener('touchstart', e => {
+      dragging = true;
+      move(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchmove', e => {
+      if (dragging) move(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchend', () => { dragging = false; });
+  })();
 
   // ── Scroll reveal ────────────────────────────────
   const reveals = document.querySelectorAll('.reveal');
