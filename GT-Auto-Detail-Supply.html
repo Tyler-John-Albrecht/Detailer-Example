@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GT Auto Detail Supply | El Cajon's Professional Detailing Experts</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['"Barlow"', 'sans-serif'],
+          },
+          colors: {
+            ink: '#060608',
+            carbon: '#0f0f12',
+            panel: '#161619',
+            rail: '#1e1e22',
+            gold: '#C9A96E',
+            'gold-lt': '#E5D0A4',
+            muted: '#666672',
+            'off-white': '#F2F0EC',
+          },
+          letterSpacing: {
+            'widest2': '0.2em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: "Barlow", sans-serif;
+      background-color: #060608;
+      color: #F2F0EC;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.modal-open { overflow: hidden; }
+
+    /* ── Noise grain overlay ──────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Typography ───────────────────────────────── */
+    .label {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .display {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Gold text gradient ───────────────────────── */
+    .gold-text {
+      background: linear-gradient(135deg, #C9A96E 0%, #E5D0A4 55%, #C9A96E 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Dividers ─────────────────────────────────── */
+    .gold-rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #C9A96E 50%, transparent 100%);
+    }
+    .gold-rule-left {
+      height: 1px;
+      background: linear-gradient(90deg, #C9A96E, transparent);
+    }
+
+    /* ── Nav ──────────────────────────────────────── */
+    .nav-glass {
+      background: rgba(6,6,8,0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(201,169,110,0.07);
+      transition: padding 0.3s ease;
+    }
+
+    /* ── Hero ─────────────────────────────────────── */
+    .hero-img {
+      background-image: url('Hero-Background.png');
+      background-size: cover;
+      background-position: center 35%;
+    }
+    .hero-vignette {
+      background: linear-gradient(
+        to bottom,
+        rgba(6,6,8,0.15) 0%,
+        rgba(6,6,8,0.35) 30%,
+        rgba(6,6,8,0.88) 72%,
+        rgba(6,6,8,1) 100%
+      );
+    }
+
+    /* ── Stat ticker (infinite marquee) ──────────── */
+    .ticker-wrap {
+      overflow: hidden;
+      position: relative;
+      background: #0f0f12;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .ticker-wrap::before, .ticker-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .ticker-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, #0f0f12, transparent);
+    }
+    .ticker-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, #0f0f12, transparent);
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 52px;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      flex-shrink: 0;
+    }
+    .ticker-dot {
+      width: 5px; height: 5px;
+      background: #C9A96E;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ticker-val {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #C9A96E;
+    }
+    .ticker-lbl {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666672;
+    }
+
+    /* ── Before/After Slider ──────────────────────── */
+    .slider-wrap {
+      position: relative;
+      overflow: hidden;
+      cursor: col-resize;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+    }
+    .slider-base {
+      display: block;
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .slider-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .slider-overlay img {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      object-fit: cover;
+      object-position: left center;
+    }
+    .slider-handle {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: #C9A96E;
+      transform: translateX(-50%);
+      pointer-events: none;
+      box-shadow: 0 0 12px rgba(201,169,110,0.4);
+    }
+    .slider-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 48px; height: 48px;
+      background: #C9A96E;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.55);
+    }
+    .slider-label {
+      position: absolute;
+      top: 16px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+    .slider-label-before {
+      left: 16px;
+      background: rgba(0,0,0,0.7);
+      color: #ff7070;
+    }
+    .slider-label-after {
+      right: 16px;
+      background: rgba(201,169,110,0.18);
+      color: #C9A96E;
+      border: 1px solid rgba(201,169,110,0.5);
+    }
+    .slider-hint {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      white-space: nowrap;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .slider-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 120px; height: 80px;
+      background: linear-gradient(315deg, rgba(6,6,8,1) 0%, rgba(6,6,8,0.9) 30%, rgba(6,6,8,0) 70%);
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    /* ── Package cards ────────────────────────────── */
+    .pkg {
+      background: linear-gradient(160deg, rgba(22,22,25,0.9) 0%, rgba(10,10,12,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.055);
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.35s ease,
+                  box-shadow 0.45s ease;
+    }
+    .pkg:hover {
+      transform: translateY(-10px);
+      border-color: rgba(201,169,110,0.3);
+      box-shadow: 0 32px 64px -16px rgba(0,0,0,0.7), 0 0 32px rgba(201,169,110,0.05);
+    }
+    .pkg-hero {
+      background: linear-gradient(160deg, rgba(201,169,110,0.055) 0%, rgba(10,10,12,0.98) 100%);
+      border: 1px solid rgba(201,169,110,0.22);
+    }
+    .pkg-hero:hover {
+      transform: translateY(-13px);
+      border-color: rgba(201,169,110,0.55);
+      box-shadow: 0 40px 72px -16px rgba(0,0,0,0.8), 0 0 50px rgba(201,169,110,0.1);
+    }
+    .pkg-featured-badge {
+      background: #C9A96E;
+      color: #060608;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 800;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 0;
+      text-align: center;
+      width: 100%;
+    }
+    .check::before {
+      content: '✓';
+      color: #C9A96E;
+      margin-right: 10px;
+      font-weight: 700;
+    }
+
+    /* ── Add-on cards ─────────────────────────────── */
+    .addon {
+      background: rgba(15,15,18,0.95);
+      border: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+      transition: border-color 0.35s ease, background 0.35s ease;
+    }
+    .addon:hover {
+      border-color: rgba(201,169,110,0.25);
+      background: rgba(18,15,10,0.97);
+    }
+    .addon img { transition: transform 0.6s ease; }
+    .addon:hover img { transform: scale(1.05); }
+
+    /* ── Process steps ────────────────────────────── */
+    .step-num {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 900;
+      font-size: 6rem;
+      line-height: 1;
+      color: rgba(201,169,110,0.1);
+      position: absolute;
+      top: 0; left: -4px;
+      pointer-events: none;
+    }
+
+    /* ── Guarantee ────────────────────────────────── */
+    .guarantee-wrap {
+      background: linear-gradient(135deg, rgba(201,169,110,0.04) 0%, rgba(6,6,8,0) 60%);
+      border: 1px solid rgba(201,169,110,0.13);
+    }
+
+    /* ── Gallery ──────────────────────────────────── */
+    .gallery-item { overflow: hidden; }
+    .gallery-item img {
+      transition: transform 0.6s ease, filter 0.4s ease;
+      filter: brightness(0.88);
+    }
+    .gallery-item:hover img { transform: scale(1.06); filter: brightness(1); }
+
+    /* ── Review ticker ────────────────────────────── */
+    .review-ticker-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .review-ticker-wrap::before, .review-ticker-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .review-ticker-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, #060608, transparent);
+    }
+    .review-ticker-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, #060608, transparent);
+    }
+    .review-ticker-track {
+      display: flex;
+      width: max-content;
+      animation: review-scroll 50s linear infinite;
+    }
+    .review-ticker-track:hover { animation-play-state: paused; }
+    @keyframes review-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .rtick {
+      width: 340px;
+      flex-shrink: 0;
+      background: linear-gradient(160deg, rgba(22,22,25,0.92) 0%, rgba(10,10,12,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.055);
+      padding: 26px 24px 22px;
+      margin: 0 8px;
+      transition: border-color 0.3s ease;
+    }
+    .rtick:hover { border-color: rgba(201,169,110,0.22); }
+    .rtick-stars { color: #C9A96E; letter-spacing: 2px; font-size: 0.8rem; }
+    .rtick-quote {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 3.2rem;
+      line-height: 0.65;
+      color: rgba(201,169,110,0.1);
+      font-weight: 900;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .rtick-text {
+      font-family: "Barlow", sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: rgba(242,240,236,0.68);
+      line-height: 1.62;
+      margin-bottom: 16px;
+    }
+    .rtick-rule {
+      height: 1px;
+      background: linear-gradient(90deg, #C9A96E, transparent);
+      width: 32px;
+      margin-bottom: 12px;
+    }
+    .rtick-name {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #C9A96E;
+    }
+    .rtick-meta {
+      font-family: "Barlow", sans-serif;
+      font-size: 0.68rem;
+      color: #666672;
+      margin-top: 2px;
+    }
+
+    /* ── CTA section ──────────────────────────────── */
+    .cta-bg {
+      background-image: url('CTA-Background.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .cta-scrim {
+      background: linear-gradient(100deg, rgba(6,6,8,0.97) 0%, rgba(6,6,8,0.88) 45%, rgba(6,6,8,0.62) 100%);
+    }
+
+    /* ── Buttons ──────────────────────────────────── */
+    .btn-gold {
+      display: inline-block;
+      background: #C9A96E;
+      color: #060608;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.28s ease, transform 0.25s ease, box-shadow 0.28s ease;
+    }
+    .btn-gold:hover {
+      background: #E5D0A4;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201,169,110,0.28);
+    }
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid rgba(201,169,110,0.45);
+      color: #C9A96E;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      cursor: pointer;
+      background: transparent;
+      transition: border-color 0.28s ease, background 0.28s ease;
+    }
+    .btn-ghost:hover {
+      border-color: #C9A96E;
+      background: rgba(201,169,110,0.07);
+    }
+
+    /* ── Booking Modal ────────────────────────────── */
+    #booking-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #booking-modal.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(6,6,8,0.93);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .modal-box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+      margin: 16px;
+      background: #0f0f12;
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow-y: auto;
+      max-height: 92vh;
+    }
+    .modal-box::-webkit-scrollbar { width: 4px; }
+    .modal-box::-webkit-scrollbar-track { background: #0f0f12; }
+    .modal-box::-webkit-scrollbar-thumb { background: #2a2a2e; border-radius: 2px; }
+    .modal-header {
+      padding: 32px 32px 0;
+      position: sticky;
+      top: 0;
+      background: #0f0f12;
+      z-index: 2;
+    }
+    .modal-body { padding: 20px 32px 32px; }
+    .modal-close-btn {
+      position: absolute;
+      top: 18px; right: 20px;
+      background: none; border: none;
+      color: #666672;
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      font-family: "Barlow", sans-serif;
+      padding: 4px 8px;
+    }
+    .modal-close-btn:hover { color: #F2F0EC; }
+    .form-row { margin-bottom: 16px; }
+    .form-label {
+      display: block;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666672;
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(30,30,34,0.8);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #F2F0EC;
+      font-family: "Barlow", sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      padding: 12px 16px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .form-input:focus {
+      border-color: rgba(201,169,110,0.45);
+      background: rgba(22,22,25,0.95);
+    }
+    .form-input::placeholder { color: rgba(102,102,114,0.55); }
+    select.form-input { cursor: pointer; }
+    select.form-input option { background: #161619; color: #F2F0EC; }
+    textarea.form-input { resize: vertical; min-height: 88px; }
+    .form-success {
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    /* ── Scroll reveal ────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.on { opacity: 1; transform: translateY(0); }
+
+    /* ── Scrollbar ────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #060608; }
+    ::-webkit-scrollbar-thumb { background: #2a2a2e; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C9A96E; }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav class="fixed top-0 w-full z-50 nav-glass" id="nav">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between" id="nav-inner">
+
+    <a href="#home" class="font-display text-lg md:text-xl tracking-widest text-white">
+      GT AUTO <span class="gold-text">DETAIL SUPPLY</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#packages"  class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">Services</a>
+      <a href="#process"   class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">How It Works</a>
+      <a href="#reviews"   class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">Reviews</a>
+      <button onclick="openModal()" class="btn-gold text-sm px-6 py-2.5">Book Now</button>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button id="mob-btn" class="md:hidden text-white p-2 z-50 relative" aria-label="Menu">
+      <svg id="ic-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="ic-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Mobile menu ── -->
+<div id="mob-menu" class="fixed inset-0 bg-ink/96 backdrop-blur-2xl z-40 flex flex-col items-center justify-center gap-8
+     opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
+  <a href="#packages"  class="mob-link display text-5xl text-white">SERVICES</a>
+  <a href="#process"   class="mob-link display text-5xl text-white">HOW IT WORKS</a>
+  <a href="#reviews"   class="mob-link display text-5xl text-white">REVIEWS</a>
+  <button onclick="openModal(); closeMobMenu();" class="btn-gold mt-4 text-base px-14 py-4">Book Now</button>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="home" class="relative w-full min-h-screen flex items-end overflow-hidden hero-img">
+  <div class="absolute inset-0 hero-vignette"></div>
+
+  <div class="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full
+       bg-gold/5 blur-[100px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full pb-24 md:pb-32">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-10 h-px" style="background:#C9A96E;"></div>
+      <span class="label text-gold">El Cajon's Professional Detailing Experts</span>
+    </div>
+
+    <h1 class="display text-white mb-5"
+        style="font-size: clamp(3.8rem, 11vw, 9.5rem);">
+      YOUR CAR<br>
+      DESERVES BETTER<br>
+      <span class="gold-text">THAN AVERAGE.</span>
+    </h1>
+
+    <p class="font-body font-300 text-off-white/75 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
+      El Cajon's only source for professional-grade detailing products — and the expert hands
+      to use them. We've been serving detailers and car owners across east county for over 6 years.
+    </p>
+
+    <div class="flex flex-wrap gap-4">
+      <button onclick="openModal()" class="btn-gold">Book a Detail</button>
+      <a href="#packages" class="btn-ghost">See Our Services</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     STATS TICKER (infinite marquee)
+══════════════════════════════════════ -->
+<div class="ticker-wrap w-full py-0">
+  <div class="ticker-track" id="ticker-track">
+
+    <!-- ── Set 1 ── -->
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">4.7 ★</div><div class="ticker-lbl">Google Rating</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">29+</div><div class="ticker-lbl">Verified Reviews</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">6+</div><div class="ticker-lbl">Years in El Cajon</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">PRO</div><div class="ticker-lbl">Grade Products</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">FULL</div><div class="ticker-lbl">Detailing Services</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">EAST</div><div class="ticker-lbl">County's Best Shop</div></div>
+    </div>
+
+    <!-- ── Set 2 (duplicate for seamless loop) ── -->
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">4.7 ★</div><div class="ticker-lbl">Google Rating</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">29+</div><div class="ticker-lbl">Verified Reviews</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">6+</div><div class="ticker-lbl">Years in El Cajon</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">PRO</div><div class="ticker-lbl">Grade Products</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">FULL</div><div class="ticker-lbl">Detailing Services</div></div>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-dot"></span>
+      <div><div class="ticker-val">EAST</div><div class="ticker-lbl">County's Best Shop</div></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PROOF — BEFORE / AFTER
+══════════════════════════════════════ -->
+<section id="proof" class="w-full py-24 md:py-32 px-4 bg-ink scroll-mt-20">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-14 reveal">
+      <div class="label text-gold mb-3">The GT Difference</div>
+      <h2 class="display text-white" style="font-size: clamp(2.8rem, 7vw, 6rem);">
+        PROFESSIONAL RESULTS.<br><span class="gold-text">EVERY SINGLE TIME.</span>
+      </h2>
+      <p class="font-body font-300 text-muted mt-5 max-w-lg mx-auto text-lg leading-relaxed">
+        That left side? What happens when the wrong products meet the wrong technique.
+        The right side? What happens when you use professional-grade supplies and someone
+        who actually knows how to use them.
+      </p>
+    </div>
+
+    <!-- Before / After drag slider -->
+    <div class="max-w-4xl mx-auto reveal">
+      <div class="slider-wrap" id="ba-wrap">
+        <!-- BASE: after image (clean result) — full width, sits behind everything -->
+        <img src="after.jpg" alt="Paint after correction — mirror finish"
+             class="slider-base" id="ba-before-img"
+             style="object-position: 55% top;">
+        <!-- OVERLAY: before image — clipped to left side -->
+        <div class="slider-overlay" id="ba-overlay">
+          <img src="before.jpg" alt="Paint before detail — swirl marks visible"
+               id="ba-after-img" style="object-position: 55% top;">
+        </div>
+        <!-- Handle line + circle -->
+        <div class="slider-handle" id="ba-handle">
+          <div class="slider-circle">
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
+              <path d="M5 1L1 7L5 13" stroke="#060608" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 1L17 7L13 13" stroke="#060608" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Labels -->
+        <div class="slider-label slider-label-before">BEFORE</div>
+        <div class="slider-label slider-label-after">AFTER</div>
+        <!-- Drag hint -->
+        <div class="slider-hint" id="ba-hint">← DRAG TO COMPARE →</div>
+      </div>
+      <p class="font-body text-xs text-muted text-center mt-3">
+        Real client vehicle · GT Auto Detail Supply · El Cajon, CA
+      </p>
+    </div>
+
+    <!-- Three proof pillars -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px mt-14 reveal" style="background:rgba(255,255,255,0.04);">
+      <div class="bg-ink p-8 text-center">
+        <div class="label text-gold mb-3">Clay Bar</div>
+        <div class="display text-white text-2xl mb-3">DECONTAMINATION</div>
+        <p class="font-body font-300 text-muted text-sm leading-relaxed">
+          Removes brake dust, iron fallout, and bonded contamination your $12 wash was grinding into the paint.
+        </p>
+      </div>
+      <div class="bg-ink p-8 text-center" style="border-left:1px solid rgba(255,255,255,0.04); border-right:1px solid rgba(255,255,255,0.04);">
+        <div class="label text-gold mb-3">Machine Polish</div>
+        <div class="display text-white text-2xl mb-3">SWIRL REMOVAL</div>
+        <p class="font-body font-300 text-muted text-sm leading-relaxed">
+          Eliminates 70–90% of swirl marks, buffer trails, and light scratches. Professional technique. Professional results.
+        </p>
+      </div>
+      <div class="bg-ink p-8 text-center">
+        <div class="label text-gold mb-3">Pro-Grade Products</div>
+        <div class="display text-white text-2xl mb-3">SEALED & PROTECTED</div>
+        <p class="font-body font-300 text-muted text-sm leading-relaxed">
+          We stock and use the same professional-grade products trusted by detailers worldwide. Not the stuff off the Walmart shelf.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SERVICES / PACKAGES
+══════════════════════════════════════ -->
+<section id="packages" class="w-full py-24 md:py-32 px-4 bg-carbon scroll-mt-20">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16 reveal">
+      <div class="label text-gold mb-3">Choose Your Service</div>
+      <h2 class="display text-white" style="font-size: clamp(2.8rem, 7vw, 6rem);">
+        WHAT DOES YOUR<br><span class="gold-text">CAR NEED?</span>
+      </h2>
+      <p class="font-body font-300 text-muted mt-5 max-w-md mx-auto text-lg">
+        Every service is done by hand, with professional-grade products. No shortcuts.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Tier 1: The Essential -->
+      <div class="pkg reveal">
+        <div class="overflow-hidden" style="height:220px;">
+          <!-- Replace with actual service photo -->
+          <img src="gt-essential-detail.png" alt="GT Essential Detail Package"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+               onerror="this.parentElement.style.background='#161619'">
+        </div>
+        <div class="p-8">
+          <div class="label text-muted mb-2">Entry Level</div>
+          <h3 class="display text-white text-3xl mb-2">THE ESSENTIAL</h3>
+          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-6">
+            For the car that needs a reset. A proper, professional clean — inside and out — done right.
+          </p>
+          <div class="gold-rule-left mb-6" style="width: 48px;"></div>
+          <ul class="space-y-3 mb-8 font-body text-sm text-off-white/80">
+            <li class="check">Full exterior hand wash &amp; dry</li>
+            <li class="check">Wheel, tire &amp; brake dust treatment</li>
+            <li class="check">Interior vacuum &amp; surface wipe-down</li>
+            <li class="check">Glass cleaning — interior &amp; exterior</li>
+            <li class="check">Tire dressing &amp; door jamb wipe</li>
+            <li class="check">Interior scenting</li>
+          </ul>
+          <div class="mb-6">
+            <div class="display text-white text-4xl">From $89</div>
+            <div class="font-body text-xs text-muted mt-1">Sedan / Standard SUV — oversize quoted</div>
+          </div>
+          <button onclick="openModal()" class="btn-ghost block text-center w-full">Book the Essential</button>
+        </div>
+      </div>
+
+      <!-- Tier 2: The Deep Clean (Most Popular) -->
+      <div class="pkg pkg-hero reveal" style="transition-delay:0.1s;">
+        <div class="pkg-featured-badge">Most Popular</div>
+        <div class="overflow-hidden" style="height:220px;">
+          <!-- Replace with actual service photo -->
+          <img src="gt-deep-clean.png" alt="GT Deep Clean Package"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+               onerror="this.parentElement.style.background='#161619'">
+        </div>
+        <div class="p-8">
+          <div class="label text-gold mb-2">Full Detail</div>
+          <h3 class="display text-white text-3xl mb-2">THE DEEP CLEAN</h3>
+          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-6">
+            Your car leaves looking the way it did the day you drove it off the lot — and smelling better.
+          </p>
+          <div class="gold-rule-left mb-6" style="width: 48px;"></div>
+          <ul class="space-y-3 mb-8 font-body text-sm text-off-white/80">
+            <li class="check">Everything in The Essential</li>
+            <li class="check">Clay bar decontamination</li>
+            <li class="check">Machine polish — removes 70–90% of swirl marks</li>
+            <li class="check">Interior steam clean</li>
+            <li class="check">Seat shampooing</li>
+            <li class="check">Engine bay wipe-down</li>
+          </ul>
+          <div class="mb-6">
+            <div class="display text-white text-4xl">From $249</div>
+            <div class="font-body text-xs text-muted mt-1">Sedan / Standard SUV — oversize quoted</div>
+          </div>
+          <button onclick="openModal()" class="btn-gold block text-center w-full">Book the Deep Clean</button>
+        </div>
+      </div>
+
+      <!-- Tier 3: The Full Restoration -->
+      <div class="pkg reveal" style="transition-delay:0.2s;">
+        <div class="overflow-hidden" style="height:220px;">
+          <!-- Replace with actual service photo -->
+          <img src="gt-full-restoration.png" alt="GT Full Restoration Package"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+               onerror="this.parentElement.style.background='#161619'">
+        </div>
+        <div class="p-8">
+          <div class="label text-muted mb-2">Full Protection</div>
+          <h3 class="display text-white text-3xl mb-2">THE RESTORATION</h3>
+          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-6">
+            For vehicles worth protecting. Corrected, sealed, and ready for whatever hits next.
+          </p>
+          <div class="gold-rule-left mb-6" style="width: 48px;"></div>
+          <ul class="space-y-3 mb-8 font-body text-sm text-off-white/80">
+            <li class="check">Everything in The Deep Clean</li>
+            <li class="check">Multi-stage paint correction</li>
+            <li class="check">Ceramic coating — 2-year protection</li>
+            <li class="check">Headlight restoration &amp; polish</li>
+            <li class="check">Exhaust tip polish</li>
+            <li class="check">Window tinting consultation included</li>
+          </ul>
+          <div class="mb-6">
+            <div class="display text-white text-4xl">Quoted</div>
+            <div class="font-body text-xs text-muted mt-1">Priced by vehicle — call us for a quote</div>
+          </div>
+          <button onclick="openModal()" class="btn-ghost block text-center w-full">Request a Quote</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Value strip -->
+    <div class="mt-10 p-6 reveal" style="background:rgba(201,169,110,0.04); border:1px solid rgba(201,169,110,0.1);">
+      <div class="display text-center text-white text-xl md:text-2xl">
+        ALL SERVICES INCLUDE: PRO-GRADE PRODUCTS · 100% SATISFACTION GUARANTEE · NO HIDDEN FEES
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     ADD-ON SERVICES
+══════════════════════════════════════ -->
+<section class="w-full py-20 px-4 bg-ink" style="border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-12 reveal">
+      <div class="label text-gold mb-3">Enhance Your Service</div>
+      <h2 class="display text-white" style="font-size: clamp(2rem, 5vw, 4rem);">
+        ADD-ON SERVICES
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+
+      <!-- Engine Bay -->
+      <div class="addon">
+        <div style="height:180px; overflow:hidden; background:#161619;">
+          <img src="gt-engine-bay.png" alt="Engine Bay Detail"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="p-5">
+          <div class="display text-white text-lg mb-2">ENGINE BAY</div>
+          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
+            Degreased, detailed, dressed. Factory-clean under the hood.
+          </p>
+          <div class="display text-gold text-2xl">From $65</div>
+        </div>
+      </div>
+
+      <!-- Headlight Restoration -->
+      <div class="addon">
+        <div style="height:180px; overflow:hidden; background:#161619;">
+          <img src="gt-headlight-restore.png" alt="Headlight Restoration"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="p-5">
+          <div class="display text-white text-lg mb-2">HEADLIGHT RESTORE</div>
+          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
+            Wet sand, compound, seal. Crystal-clear lenses — not the yellow haze you've been driving with.
+          </p>
+          <div class="display text-gold text-2xl">From $55</div>
+        </div>
+      </div>
+
+      <!-- Exhaust Tip Polish -->
+      <div class="addon">
+        <div style="height:180px; overflow:hidden; background:#161619;">
+          <img src="gt-exhaust-polish.png" alt="Exhaust Tip Polish"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="p-5">
+          <div class="display text-white text-lg mb-2">EXHAUST POLISH</div>
+          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
+            Tips polished to mirror finish. Because the back of your car matters too.
+          </p>
+          <div class="display text-gold text-2xl">From $40</div>
+        </div>
+      </div>
+
+      <!-- Window Tinting -->
+      <div class="addon">
+        <div style="height:180px; overflow:hidden; background:#161619;">
+          <img src="gt-window-tint.png" alt="Window Tinting"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="p-5">
+          <div class="display text-white text-lg mb-2">WINDOW TINTING</div>
+          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
+            UV protection, heat rejection, and clean aesthetics. Professional installation only.
+          </p>
+          <div class="display text-gold text-2xl">Quoted</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════ -->
+<section id="process" class="w-full py-24 md:py-32 px-4 bg-carbon scroll-mt-20"
+         style="border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16 reveal">
+      <div class="label text-gold mb-3">How It Works</div>
+      <h2 class="display text-white" style="font-size: clamp(2.8rem, 7vw, 6rem);">
+        THREE STEPS.<br><span class="gold-text">ZERO HEADACHES.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+
+      <!-- Step 1 -->
+      <div class="relative reveal">
+        <div class="overflow-hidden mb-6" style="height:260px; background:#161619;">
+          <img src="Step1-Book.png" alt="Book your appointment"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="relative pl-4">
+          <div class="step-num">01</div>
+          <div class="relative z-10">
+            <div class="label text-gold mb-2">Step One</div>
+            <h3 class="display text-white text-2xl mb-3">BOOK YOUR SPOT</h3>
+            <p class="font-body font-300 text-muted text-sm leading-relaxed">
+              Fill out our quick form or give us a call. We'll confirm your appointment within a few hours. No back-and-forth.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative reveal" style="transition-delay:0.1s;">
+        <div class="overflow-hidden mb-6" style="height:260px; background:#161619;">
+          <img src="Step2-Arrive.png" alt="Bring your vehicle in"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="relative pl-4">
+          <div class="step-num">02</div>
+          <div class="relative z-10">
+            <div class="label text-gold mb-2">Step Two</div>
+            <h3 class="display text-white text-2xl mb-3">BRING IT IN</h3>
+            <p class="font-body font-300 text-muted text-sm leading-relaxed">
+              Drop your vehicle at our El Cajon location. We'll walk you through what we're doing and why before we start.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative reveal" style="transition-delay:0.2s;">
+        <div class="overflow-hidden mb-6" style="height:260px; background:#161619;">
+          <img src="gt-work.png" alt="We do the work"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="relative pl-4">
+          <div class="step-num">03</div>
+          <div class="relative z-10">
+            <div class="label text-gold mb-2">Step Three</div>
+            <h3 class="display text-white text-2xl mb-3">WE DO THE WORK</h3>
+            <p class="font-body font-300 text-muted text-sm leading-relaxed">
+              Every step done by hand with professional-grade products. You pick it up looking better than when you dropped it off. Guaranteed.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     GUARANTEE
+══════════════════════════════════════ -->
+<section id="guarantee" class="w-full py-24 md:py-32 px-4 bg-ink scroll-mt-20"
+         style="border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center reveal">
+
+      <!-- Copy -->
+      <div>
+        <div class="label text-muted mb-5">A note before you book</div>
+        <h2 class="display text-white mb-8" style="font-size: clamp(2.8rem, 6vw, 5rem);">
+          WE ONLY TAKE<br>8 VEHICLES<br><span class="gold-text">PER WEEK.</span>
+        </h2>
+        <p class="font-body font-300 text-muted leading-relaxed mb-5 text-lg">
+          That's not a scarcity tactic. We've been doing this for over 6 years because we refuse
+          to rush. Every car gets the same level of attention — whether it's a daily driver or
+          a collector car.
+        </p>
+        <p class="font-body font-300 text-muted leading-relaxed mb-10">
+          If you're not completely satisfied before you drive off — we fix it on the spot,
+          or you owe us nothing. No fine print. No hoops. That's how we've kept customers
+          coming back for years.
+        </p>
+        <div class="flex items-start gap-5 p-6"
+             style="background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15);">
+          <div class="display text-gold leading-none" style="font-size:2.5rem;">✓</div>
+          <div>
+            <div class="display text-white text-xl mb-1">100% SATISFACTION OR IT'S FREE</div>
+            <div class="font-body font-300 text-muted text-sm leading-relaxed">
+              Not happy? Tell us before you leave. We fix it on the spot or you don't pay. No questions asked.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div>
+        <img src="gt-guarantee.png" alt="GT Auto Detail Supply precision work"
+             class="w-full object-cover" style="height:420px; background:#161619;"
+             onerror="this.style.background='#161619'">
+        <div class="gold-rule mt-0"></div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     GALLERY
+══════════════════════════════════════ -->
+<section class="w-full py-20 bg-carbon" style="border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <div class="text-center mb-12 reveal">
+      <div class="label text-gold mb-3">Portfolio</div>
+      <h2 class="display text-white" style="font-size: clamp(2rem, 5vw, 4rem);">
+        THE WORK SPEAKS
+      </h2>
+    </div>
+
+    <div class="gallery-item reveal mb-2">
+      <!-- Replace with GT's showcase photo -->
+      <img src="gt-showcase.png" alt="GT Auto Detail Supply showcase work"
+           class="w-full object-cover" style="height:420px; object-position: center 25%; background:#161619;"
+           onerror="this.style.background='#161619'">
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 reveal">
+      <div class="gallery-item col-span-2">
+        <img src="gt-gallery-1.png" alt="GT Detail Work"
+             class="w-full object-cover" style="height:240px; background:#161619;"
+             onerror="this.style.background='#161619'">
+      </div>
+      <div class="gallery-item">
+        <img src="gt-gallery-2.png" alt="GT Interior Detail"
+             class="w-full object-cover" style="height:240px; background:#161619;"
+             onerror="this.style.background='#161619'">
+      </div>
+      <div class="gallery-item">
+        <img src="gt-gallery-3.png" alt="GT Engine Detail"
+             class="w-full object-cover" style="height:240px; background:#161619;"
+             onerror="this.style.background='#161619'">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 mt-2 reveal">
+      <div class="gallery-item">
+        <img src="gt-gallery-4.png" alt="GT Detail"
+             class="w-full object-cover" style="height:160px; background:#161619;"
+             onerror="this.style.background='#161619'">
+      </div>
+      <div class="gallery-item">
+        <img src="gt-gallery-5.png" alt="GT Polish"
+             class="w-full object-cover" style="height:160px; background:#161619;"
+             onerror="this.style.background='#161619'">
+      </div>
+      <div class="gallery-item">
+        <img src="gt-gallery-6.png" alt="GT Ceramic Coat"
+             class="w-full object-cover" style="height:160px; background:#161619;"
+             onerror="this.style.background='#161619'">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     REVIEWS
+══════════════════════════════════════ -->
+<section id="reviews" class="w-full py-24 md:py-32 px-4 bg-ink scroll-mt-20"
+         style="border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-14 reveal">
+      <div class="label text-gold mb-3">Real Customers. Real Results.</div>
+      <h2 class="display text-white" style="font-size: clamp(2.8rem, 7vw, 6rem);">
+        WHAT EL CAJON<br><span class="gold-text">IS SAYING.</span>
+      </h2>
+      <!-- Aggregate rating badge -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <div class="display text-gold" style="font-size: clamp(2.5rem, 6vw, 4rem);">4.7</div>
+        <div>
+          <div class="review-stars">★★★★★</div>
+          <div class="label text-muted mt-1" style="font-size:0.58rem;">29 Google Reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review ticker (infinite horizontal scroll) -->
+    <div class="review-ticker-wrap w-full py-4">
+      <div class="review-ticker-track">
+
+        <!-- ── Set 1 ── -->
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">Walked in frustrated — couldn't wash my new BMW. Left with the right premium products and knowing exactly how to use them. I've never had my car look this good.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Ian K.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">Hands down the best one stop shop. Always stocked with the best products. Always extremely helpful, knowledgeable and willing to go the extra mile.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Chris J.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review · 1 month ago</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">Been coming here 5 years — they have never not taken care of me. Best place in east county for detailing supplies or service. They welcome everyone and love to help.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Josh P.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review · 1 month ago</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">My #1 spot for detail supplies. He's been in the business forever and knows everything. I can call him any time with a question and he never makes me feel like I'm bugging.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Lisa M.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">By far the nicest detail supply store in east county — if not all of San Diego. The owner always goes above and beyond to make sure my business stays running smoothly.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Skye W.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">Amazing customer service, premium products, and an owner who gives you the best knowledge on caring for your car. This is the place to visit. I will for sure be back.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Ben I.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Google Local Guide · 226 reviews</div>
+        </div>
+
+        <!-- ── Set 2 (duplicate for seamless loop) ── -->
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">Walked in frustrated — couldn't wash my new BMW. Left with the right premium products and knowing exactly how to use them. I've never had my car look this good.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Ian K.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">Hands down the best one stop shop. Always stocked with the best products. Always extremely helpful, knowledgeable and willing to go the extra mile.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Chris J.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review · 1 month ago</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">Been coming here 5 years — they have never not taken care of me. Best place in east county for detailing supplies or service. They welcome everyone and love to help.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Josh P.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review · 1 month ago</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">My #1 spot for detail supplies. He's been in the business forever and knows everything. I can call him any time with a question and he never makes me feel like I'm bugging.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Lisa M.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">By far the nicest detail supply store in east county — if not all of San Diego. The owner always goes above and beyond to make sure my business stays running smoothly.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Skye W.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Verified Google Review</div>
+        </div>
+
+        <div class="rtick">
+          <span class="rtick-quote">"</span>
+          <p class="rtick-text">Amazing customer service, premium products, and an owner who gives you the best knowledge on caring for your car. This is the place to visit. I will for sure be back.</p>
+          <div class="rtick-rule"></div>
+          <div class="rtick-name">Ben I.</div>
+          <div class="rtick-stars mt-1">★★★★★</div>
+          <div class="rtick-meta">Google Local Guide · 226 reviews</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Leave a review CTA -->
+    <div class="text-center mt-12 reveal">
+      <a href="https://maps.google.com/search/GT+Auto+Detail+Supply+El+Cajon" target="_blank" rel="noopener" class="btn-ghost">
+        Leave Us a Review
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="w-full py-36 md:py-48 relative overflow-hidden cta-bg">
+  <div class="absolute inset-0 cta-scrim"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-10 reveal">
+    <div class="label text-gold mb-5">Ready?</div>
+    <h2 class="display text-white mb-6"
+        style="font-size: clamp(3.5rem, 10vw, 8.5rem); max-width: 700px;">
+      BOOK YOUR<br><span class="gold-text">DETAIL.</span>
+    </h2>
+    <p class="font-body font-300 text-off-white/70 text-xl mb-10 max-w-lg leading-relaxed">
+      Professional-grade products. Expert hands. 100% satisfaction or you don't pay.
+      Spots fill up fast — lock yours in now.
+    </p>
+    <button onclick="openModal()" class="btn-gold text-base px-14 py-5">Claim My Spot</button>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER / CONTACT
+══════════════════════════════════════ -->
+<footer id="contact" class="w-full bg-ink pt-20 pb-10 px-4"
+        style="border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+
+      <!-- Brand -->
+      <div>
+        <div class="display text-white text-2xl tracking-widest mb-4">
+          GT AUTO <span class="gold-text">DETAIL SUPPLY</span>
+        </div>
+        <p class="font-body font-300 text-muted text-sm leading-relaxed max-w-xs">
+          El Cajon's professional detailing supply store and service center.
+          Pro-grade products. Expert results.
+        </p>
+        <div class="flex gap-4 mt-6">
+          <a href="https://www.instagram.com/gtautodetailsupply" target="_blank" rel="noopener"
+             class="label text-muted hover:text-gold transition-colors">IG</a>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <div>
+        <div class="label text-gold mb-5">Navigate</div>
+        <ul class="space-y-3 font-body font-300 text-sm">
+          <li><a href="#packages"  class="text-muted hover:text-white transition-colors">Services</a></li>
+          <li><a href="#process"   class="text-muted hover:text-white transition-colors">How It Works</a></li>
+          <li><a href="#guarantee" class="text-muted hover:text-white transition-colors">Our Guarantee</a></li>
+          <li><a href="#reviews"   class="text-muted hover:text-white transition-colors">Reviews</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div class="label text-gold mb-5">Get in Touch</div>
+        <div class="space-y-3 font-body font-300 text-sm text-muted">
+          <div><a href="tel:+17604194871" class="hover:text-white transition-colors">📞 (760) 419-4871</a></div>
+          <div>📍 1934 N Marshall Ave #104, El Cajon, CA 92020</div>
+          <div class="pt-1 text-xs leading-relaxed">
+            Mon 8:30AM–4:00PM<br>
+            Tue–Fri 8:00AM–4:00PM<br>
+            Sat 8:00AM–1:00PM<br>
+            Sun CLOSED
+          </div>
+        </div>
+        <div class="mt-6">
+          <a href="tel:+17604194871" class="btn-gold text-sm">Call to Book</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gold-rule mb-8"></div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-3
+         font-body font-300 text-xs text-muted">
+      <div>© 2025 GT Auto Detail Supply. All rights reserved.</div>
+      <div>Website design by <span class="text-gold">Brechtland</span></div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════
+     BOOKING MODAL
+══════════════════════════════════════ -->
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Book your appointment">
+
+  <!-- Backdrop -->
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+
+  <!-- Modal box -->
+  <div class="modal-box">
+
+    <!-- Header -->
+    <div class="modal-header">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close">×</button>
+      <div class="label text-gold mb-2">Let's Get Started</div>
+      <h2 class="display text-white mb-2" style="font-size: clamp(1.8rem, 4vw, 2.4rem);">
+        BOOK YOUR DETAIL
+      </h2>
+      <div class="gold-rule-left mb-5" style="width: 40px;"></div>
+    </div>
+
+    <!-- Form body -->
+    <div class="modal-body" id="modal-body">
+      <!-- IMPORTANT: Update action to your Formspree endpoint (https://formspree.io/f/YOURKEY) or backend URL -->
+      <form id="booking-form">
+
+        <div class="form-row">
+          <label class="form-label" for="f-name">Full Name *</label>
+          <input class="form-input" id="f-name" type="text" name="name"
+                 placeholder="John Smith" required autocomplete="name">
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="f-phone">Phone Number *</label>
+          <input class="form-input" id="f-phone" type="tel" name="phone"
+                 placeholder="(760) 555-0123" required autocomplete="tel">
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="f-email">Email Address</label>
+          <input class="form-input" id="f-email" type="email" name="email"
+                 placeholder="you@email.com" autocomplete="email">
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="f-service">Service Interested In *</label>
+          <select class="form-input" id="f-service" name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>The Essential (From $89)</option>
+            <option>The Deep Clean (From $249)</option>
+            <option>The Full Restoration (Quote)</option>
+            <option>Engine Bay Detail (From $65)</option>
+            <option>Headlight Restoration (From $55)</option>
+            <option>Exhaust Tip Polish (From $40)</option>
+            <option>Window Tinting (Quote)</option>
+            <option>Supply / Product Question</option>
+            <option>Not Sure — Help Me Decide</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="f-vehicle">Your Vehicle</label>
+          <input class="form-input" id="f-vehicle" type="text" name="vehicle"
+                 placeholder="e.g. 2022 BMW M4, Black">
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="f-message">Anything Else? (Optional)</label>
+          <textarea class="form-input" id="f-message" name="message" rows="3"
+                    placeholder="Tell us about your car or what you need..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-gold w-full text-center py-4 text-base"
+                style="display:block; margin-top:8px;">
+          Request My Appointment
+        </button>
+
+        <p class="font-body text-xs text-muted text-center mt-4">
+          We'll call or text you within a few hours to confirm your spot.
+        </p>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script>
+  // ── Nav shrink on scroll ─────────────────────────
+  const nav = document.getElementById('nav');
+  const navInner = document.getElementById('nav-inner');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navInner.style.paddingTop    = '10px';
+      navInner.style.paddingBottom = '10px';
+    } else {
+      navInner.style.paddingTop    = '16px';
+      navInner.style.paddingBottom = '16px';
+    }
+  }, { passive: true });
+
+  // ── Mobile menu ──────────────────────────────────
+  const mobBtn   = document.getElementById('mob-btn');
+  const mobMenu  = document.getElementById('mob-menu');
+  const icOpen   = document.getElementById('ic-open');
+  const icClose  = document.getElementById('ic-close');
+  let   menuOpen = false;
+
+  function closeMobMenu() {
+    menuOpen = false;
+    mobMenu.style.opacity      = '0';
+    mobMenu.style.pointerEvents = 'none';
+    icOpen.classList.remove('hidden');
+    icClose.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  mobBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobMenu.style.opacity       = menuOpen ? '1' : '0';
+    mobMenu.style.pointerEvents = menuOpen ? 'all' : 'none';
+    icOpen.classList.toggle('hidden',  menuOpen);
+    icClose.classList.toggle('hidden', !menuOpen);
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', closeMobMenu);
+  });
+
+  // ── Booking Modal ────────────────────────────────
+  const modal    = document.getElementById('booking-modal');
+  const modalBg  = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('modal-close');
+
+  function openModal() {
+    modal.classList.add('is-open');
+    document.body.classList.add('modal-open');
+  }
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+  }
+
+  modalBg.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ── Form submission ──────────────────────────────
+  document.getElementById('booking-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('f-name').value || 'there';
+
+    document.getElementById('modal-body').innerHTML = `
+      <div class="form-success">
+        <div class="display text-gold mb-3" style="font-size:3.5rem; line-height:1;">✓</div>
+        <div class="display text-white text-3xl mb-4">GOT IT, ${name.split(' ')[0].toUpperCase()}.</div>
+        <p class="font-body font-300 text-muted leading-relaxed mb-6">
+          We'll call or text you within a few hours to confirm your appointment.
+          In the meantime, feel free to reach us directly at
+          <a href="tel:+17604194871" class="text-gold hover:text-gold-lt">(760) 419-4871</a>.
+        </p>
+        <button onclick="closeModal()" class="btn-gold px-10 py-4">Close</button>
+      </div>
+    `;
+
+    // ── TO ACTUALLY SUBMIT: uncomment and update endpoint below ──
+    // fetch('https://formspree.io/f/YOURKEY', {
+    //   method: 'POST',
+    //   body: new FormData(this),
+    //   headers: { 'Accept': 'application/json' }
+    // });
+  });
+
+  // ── Before/After Drag Slider ─────────────────────
+  (function() {
+    const wrap     = document.getElementById('ba-wrap');
+    const overlay  = document.getElementById('ba-overlay');
+    const handle   = document.getElementById('ba-handle');
+    const afterImg = document.getElementById('ba-after-img');
+    const hint     = document.getElementById('ba-hint');
+    if (!wrap) return;
+
+    let dragging = false;
+
+    // After image must be exactly as wide as the container
+    // so both images are pixel-aligned at every drag position
+    function syncWidth() {
+      afterImg.style.width = wrap.offsetWidth + 'px';
+    }
+    syncWidth();
+    window.addEventListener('resize', syncWidth);
+
+    function move(clientX) {
+      const rect = wrap.getBoundingClientRect();
+      let p = ((clientX - rect.left) / rect.width) * 100;
+      p = Math.max(1, Math.min(99, p));
+      overlay.style.width = p + '%';
+      handle.style.left   = p + '%';
+      if (hint) hint.style.opacity = '0';
+    }
+
+    // Mouse
+    wrap.addEventListener('mousedown', e => {
+      dragging = true;
+      move(e.clientX);
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', e => { if (dragging) move(e.clientX); });
+    window.addEventListener('mouseup',   ()  => { dragging = false; });
+
+    // Touch
+    wrap.addEventListener('touchstart', e => {
+      dragging = true;
+      move(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchmove', e => {
+      if (dragging) move(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchend', () => { dragging = false; });
+  })();
+
+  // ── Scroll reveal ────────────────────────────────
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('on');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => ro.observe(el));
+</script>
+
+</body>
+</html>
