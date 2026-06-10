@@ -104,7 +104,7 @@
 
     /* ── Hero ─────────────────────────────────────── */
     .hero-img {
-      background-image: url('Hero-Background.png');
+      background-image: url('Hero%20Background.png');
       background-size: cover;
       background-position: center 35%;
     }
@@ -767,32 +767,24 @@
       </p>
     </div>
 
-    <!-- Before / After drag slider -->
+    <!-- Before / After static comparison -->
     <div class="max-w-4xl mx-auto reveal">
-      <div class="slider-wrap" id="ba-wrap">
-        <!-- BASE: after image (clean result) — full width, sits behind everything -->
-        <img src="after.jpg" alt="Paint after correction — mirror finish"
-             class="slider-base" id="ba-before-img"
-             style="object-position: 55% top;">
-        <!-- OVERLAY: before image — clipped to left side -->
-        <div class="slider-overlay" id="ba-overlay">
-          <img src="before.jpg" alt="Paint before detail — swirl marks visible"
-               id="ba-after-img" style="object-position: 55% top;">
-        </div>
-        <!-- Handle line + circle -->
-        <div class="slider-handle" id="ba-handle">
-          <div class="slider-circle">
-            <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
-              <path d="M5 1L1 7L5 13" stroke="#060608" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13 1L17 7L13 13" stroke="#060608" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
+      <div class="relative overflow-hidden" style="height:460px;">
+        <img src="Before%20%26%20After.png"
+             alt="Before and After — GT Auto Detail Supply"
+             class="w-full h-full object-cover" style="object-position: center;">
+        <!-- Gold center divider -->
+        <div style="position:absolute; top:0; bottom:0; left:50%; width:2px;
+                    background:#C9A96E; transform:translateX(-50%);
+                    box-shadow:0 0 14px rgba(201,169,110,0.45);
+                    pointer-events:none;"></div>
         <!-- Labels -->
         <div class="slider-label slider-label-before">BEFORE</div>
         <div class="slider-label slider-label-after">AFTER</div>
-        <!-- Drag hint -->
-        <div class="slider-hint" id="ba-hint">← DRAG TO COMPARE →</div>
+        <!-- Watermark corner cover -->
+        <div style="position:absolute; bottom:0; right:0; width:120px; height:80px;
+                    background:linear-gradient(315deg,rgba(6,6,8,1) 0%,rgba(6,6,8,0.9) 30%,rgba(6,6,8,0) 70%);
+                    pointer-events:none; z-index:8;"></div>
       </div>
       <p class="font-body text-xs text-muted text-center mt-3">
         Real client vehicle · GT Auto Detail Supply · El Cajon, CA
@@ -850,7 +842,7 @@
       <div class="pkg reveal">
         <div class="overflow-hidden" style="height:220px;">
           <!-- Replace with actual service photo -->
-          <img src="gt-essential-detail.png" alt="GT Essential Detail Package"
+          <img src="The%20Commuter.png" alt="GT Essential Detail Package"
                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                onerror="this.parentElement.style.background='#161619'">
         </div>
@@ -882,7 +874,7 @@
         <div class="pkg-featured-badge">Most Popular</div>
         <div class="overflow-hidden" style="height:220px;">
           <!-- Replace with actual service photo -->
-          <img src="gt-deep-clean.png" alt="GT Deep Clean Package"
+          <img src="Action%20Shot.png" alt="GT Deep Clean Package"
                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                onerror="this.parentElement.style.background='#161619'">
         </div>
@@ -913,7 +905,7 @@
       <div class="pkg reveal" style="transition-delay:0.2s;">
         <div class="overflow-hidden" style="height:220px;">
           <!-- Replace with actual service photo -->
-          <img src="gt-full-restoration.png" alt="GT Full Restoration Package"
+          <img src="Asset%20Protector.png" alt="GT Full Restoration Package"
                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                onerror="this.parentElement.style.background='#161619'">
         </div>
@@ -971,7 +963,7 @@
       <!-- Engine Bay -->
       <div class="addon">
         <div style="height:180px; overflow:hidden; background:#161619;">
-          <img src="gt-engine-bay.png" alt="Engine Bay Detail"
+          <img src="Engine%20Bay%20Detail.png" alt="Engine Bay Detail"
                class="w-full h-full object-cover"
                onerror="this.style.display='none'">
         </div>
@@ -984,10 +976,26 @@
         </div>
       </div>
 
+      <!-- Interior Extraction -->
+      <div class="addon">
+        <div style="height:180px; overflow:hidden; background:#161619;">
+          <img src="Interior%20Reset.png" alt="Interior Extraction"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="p-5">
+          <div class="display text-white text-lg mb-2">INTERIOR EXTRACTION</div>
+          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
+            Deep extraction on seats, carpet, and mats. Odors gone — not masked.
+          </p>
+          <div class="display text-gold text-2xl">From $100</div>
+        </div>
+      </div>
+
       <!-- Headlight Restoration -->
       <div class="addon">
         <div style="height:180px; overflow:hidden; background:#161619;">
-          <img src="gt-headlight-restore.png" alt="Headlight Restoration"
+          <img src="headlight.png" alt="Headlight Restoration"
                class="w-full h-full object-cover"
                onerror="this.style.display='none'">
         </div>
@@ -996,39 +1004,23 @@
           <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
             Wet sand, compound, seal. Crystal-clear lenses — not the yellow haze you've been driving with.
           </p>
-          <div class="display text-gold text-2xl">From $55</div>
+          <div class="display text-gold text-2xl">From $60</div>
         </div>
       </div>
 
-      <!-- Exhaust Tip Polish -->
+      <!-- Ozone Treatment -->
       <div class="addon">
         <div style="height:180px; overflow:hidden; background:#161619;">
-          <img src="gt-exhaust-polish.png" alt="Exhaust Tip Polish"
+          <img src="ozone.png" alt="Ozone Odor Elimination"
                class="w-full h-full object-cover"
                onerror="this.style.display='none'">
         </div>
         <div class="p-5">
-          <div class="display text-white text-lg mb-2">EXHAUST POLISH</div>
+          <div class="display text-white text-lg mb-2">OZONE TREATMENT</div>
           <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
-            Tips polished to mirror finish. Because the back of your car matters too.
+            Eliminates smoke, mildew, and pet odor at the molecular level. No air freshener cover-up.
           </p>
-          <div class="display text-gold text-2xl">From $40</div>
-        </div>
-      </div>
-
-      <!-- Window Tinting -->
-      <div class="addon">
-        <div style="height:180px; overflow:hidden; background:#161619;">
-          <img src="gt-window-tint.png" alt="Window Tinting"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'">
-        </div>
-        <div class="p-5">
-          <div class="display text-white text-lg mb-2">WINDOW TINTING</div>
-          <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
-            UV protection, heat rejection, and clean aesthetics. Professional installation only.
-          </p>
-          <div class="display text-gold text-2xl">Quoted</div>
+          <div class="display text-gold text-2xl">From $80</div>
         </div>
       </div>
 
@@ -1094,7 +1086,7 @@
       <!-- Step 3 -->
       <div class="relative reveal" style="transition-delay:0.2s;">
         <div class="overflow-hidden mb-6" style="height:260px; background:#161619;">
-          <img src="gt-work.png" alt="We do the work"
+          <img src="Step3-Clean.png" alt="We do the work"
                class="w-full h-full object-cover"
                onerror="this.style.display='none'">
         </div>
@@ -1154,7 +1146,7 @@
 
       <!-- Image -->
       <div>
-        <img src="gt-guarantee.png" alt="GT Auto Detail Supply precision work"
+        <img src="Guarantee-Image.png" alt="GT Auto Detail Supply precision work"
              class="w-full object-cover" style="height:420px; background:#161619;"
              onerror="this.style.background='#161619'">
         <div class="gold-rule mt-0"></div>
@@ -1181,23 +1173,23 @@
 
     <div class="gallery-item reveal mb-2">
       <!-- Replace with GT's showcase photo -->
-      <img src="gt-showcase.png" alt="GT Auto Detail Supply showcase work"
+      <img src="showcase.png" alt="GT Auto Detail Supply showcase work"
            class="w-full object-cover" style="height:420px; object-position: center 25%; background:#161619;"
            onerror="this.style.background='#161619'">
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 reveal">
       <div class="gallery-item col-span-2">
-        <img src="gt-gallery-1.png" alt="GT Detail Work"
+        <img src="Asset%20Protector.png" alt="GT Detail Work"
              class="w-full object-cover" style="height:240px; background:#161619;"
              onerror="this.style.background='#161619'">
       </div>
       <div class="gallery-item">
-        <img src="gt-gallery-2.png" alt="GT Interior Detail"
+        <img src="Interior%20Reset.png" alt="GT Interior Detail"
              class="w-full object-cover" style="height:240px; background:#161619;"
              onerror="this.style.background='#161619'">
       </div>
       <div class="gallery-item">
-        <img src="gt-gallery-3.png" alt="GT Engine Detail"
+        <img src="Engine%20Bay%20Detail.png" alt="GT Engine Detail"
              class="w-full object-cover" style="height:240px; background:#161619;"
              onerror="this.style.background='#161619'">
       </div>
@@ -1205,17 +1197,17 @@
 
     <div class="grid grid-cols-3 gap-2 mt-2 reveal">
       <div class="gallery-item">
-        <img src="gt-gallery-4.png" alt="GT Detail"
+        <img src="The%20Commuter.png" alt="GT Detail"
              class="w-full object-cover" style="height:160px; background:#161619;"
              onerror="this.style.background='#161619'">
       </div>
       <div class="gallery-item">
-        <img src="gt-gallery-5.png" alt="GT Polish"
+        <img src="Action%20Shot.png" alt="GT Polish"
              class="w-full object-cover" style="height:160px; background:#161619;"
              onerror="this.style.background='#161619'">
       </div>
       <div class="gallery-item">
-        <img src="gt-gallery-6.png" alt="GT Ceramic Coat"
+        <img src="Guarantee-Image.png" alt="GT Ceramic Coat"
              class="w-full object-cover" style="height:160px; background:#161619;"
              onerror="this.style.background='#161619'">
       </div>
@@ -1638,54 +1630,6 @@
     //   headers: { 'Accept': 'application/json' }
     // });
   });
-
-  // ── Before/After Drag Slider ─────────────────────
-  (function() {
-    const wrap     = document.getElementById('ba-wrap');
-    const overlay  = document.getElementById('ba-overlay');
-    const handle   = document.getElementById('ba-handle');
-    const afterImg = document.getElementById('ba-after-img');
-    const hint     = document.getElementById('ba-hint');
-    if (!wrap) return;
-
-    let dragging = false;
-
-    // After image must be exactly as wide as the container
-    // so both images are pixel-aligned at every drag position
-    function syncWidth() {
-      afterImg.style.width = wrap.offsetWidth + 'px';
-    }
-    syncWidth();
-    window.addEventListener('resize', syncWidth);
-
-    function move(clientX) {
-      const rect = wrap.getBoundingClientRect();
-      let p = ((clientX - rect.left) / rect.width) * 100;
-      p = Math.max(1, Math.min(99, p));
-      overlay.style.width = p + '%';
-      handle.style.left   = p + '%';
-      if (hint) hint.style.opacity = '0';
-    }
-
-    // Mouse
-    wrap.addEventListener('mousedown', e => {
-      dragging = true;
-      move(e.clientX);
-      e.preventDefault();
-    });
-    window.addEventListener('mousemove', e => { if (dragging) move(e.clientX); });
-    window.addEventListener('mouseup',   ()  => { dragging = false; });
-
-    // Touch
-    wrap.addEventListener('touchstart', e => {
-      dragging = true;
-      move(e.touches[0].clientX);
-    }, { passive: true });
-    window.addEventListener('touchmove', e => {
-      if (dragging) move(e.touches[0].clientX);
-    }, { passive: true });
-    window.addEventListener('touchend', () => { dragging = false; });
-  })();
 
   // ── Scroll reveal ────────────────────────────────
   const reveals = document.querySelectorAll('.reveal');
