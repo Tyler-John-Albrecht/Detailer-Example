@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GT Auto Detail Supply | El Cajon's Professional Detailing Experts</title>
+  <title>Meza Detail | Chula Vista's Premier Mobile Auto Care</title>
 
+  <!-- Fonts: Barlow Condensed (display) + Barlow (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -46,7 +47,6 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    body.modal-open { overflow: hidden; }
 
     /* ── Noise grain overlay ──────────────────────── */
     body::after {
@@ -59,7 +59,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    /* ── Typography ───────────────────────────────── */
+    /* ── Typography helpers ───────────────────────── */
     .label {
       font-family: "Barlow Condensed", sans-serif;
       font-weight: 700;
@@ -83,7 +83,7 @@
       background-clip: text;
     }
 
-    /* ── Dividers ─────────────────────────────────── */
+    /* ── Thin gold divider ────────────────────────── */
     .gold-rule {
       height: 1px;
       background: linear-gradient(90deg, transparent 0%, #C9A96E 50%, transparent 100%);
@@ -118,73 +118,14 @@
       );
     }
 
-    /* ── Stat ticker (infinite marquee) ──────────── */
-    .ticker-wrap {
-      overflow: hidden;
-      position: relative;
+    /* ── Stat strip ───────────────────────────────── */
+    .stat-strip {
       background: #0f0f12;
       border-top: 1px solid rgba(255,255,255,0.04);
       border-bottom: 1px solid rgba(255,255,255,0.04);
     }
-    .ticker-wrap::before, .ticker-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 100px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .ticker-wrap::before {
-      left: 0;
-      background: linear-gradient(to right, #0f0f12, transparent);
-    }
-    .ticker-wrap::after {
-      right: 0;
-      background: linear-gradient(to left, #0f0f12, transparent);
-    }
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 28s linear infinite;
-    }
-    .ticker-track:hover { animation-play-state: paused; }
-    @keyframes marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .ticker-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 18px 52px;
-      white-space: nowrap;
-      border-right: 1px solid rgba(255,255,255,0.05);
-      flex-shrink: 0;
-    }
-    .ticker-dot {
-      width: 5px; height: 5px;
-      background: #C9A96E;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .ticker-val {
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 900;
-      font-size: 1.6rem;
-      text-transform: uppercase;
-      line-height: 1;
-      color: #C9A96E;
-    }
-    .ticker-lbl {
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 700;
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #666672;
-    }
 
-    /* ── Before/After Slider ──────────────────────── */
+    /* ── Before/After Drag Slider ─────────────────── */
     .slider-wrap {
       position: relative;
       overflow: hidden;
@@ -277,12 +218,20 @@
       pointer-events: none;
       transition: opacity 0.5s ease;
     }
+    /* ── Watermark gradient cover — bottom-right corner ── */
     .slider-wrap::after {
       content: '';
       position: absolute;
-      bottom: 0; right: 0;
-      width: 120px; height: 80px;
-      background: linear-gradient(315deg, rgba(6,6,8,1) 0%, rgba(6,6,8,0.9) 30%, rgba(6,6,8,0) 70%);
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      height: 80px;
+      background: linear-gradient(
+        315deg,
+        rgba(6,6,8,1)   0%,
+        rgba(6,6,8,0.9) 30%,
+        rgba(6,6,8,0)   70%
+      );
       pointer-events: none;
       z-index: 8;
     }
@@ -298,7 +247,8 @@
     .pkg:hover {
       transform: translateY(-10px);
       border-color: rgba(201,169,110,0.3);
-      box-shadow: 0 32px 64px -16px rgba(0,0,0,0.7), 0 0 32px rgba(201,169,110,0.05);
+      box-shadow: 0 32px 64px -16px rgba(0,0,0,0.7),
+                  0 0 32px rgba(201,169,110,0.05);
     }
     .pkg-hero {
       background: linear-gradient(160deg, rgba(201,169,110,0.055) 0%, rgba(10,10,12,0.98) 100%);
@@ -307,7 +257,8 @@
     .pkg-hero:hover {
       transform: translateY(-13px);
       border-color: rgba(201,169,110,0.55);
-      box-shadow: 0 40px 72px -16px rgba(0,0,0,0.8), 0 0 50px rgba(201,169,110,0.1);
+      box-shadow: 0 40px 72px -16px rgba(0,0,0,0.8),
+                  0 0 50px rgba(201,169,110,0.1);
     }
     .pkg-featured-badge {
       background: #C9A96E;
@@ -321,6 +272,8 @@
       text-align: center;
       width: 100%;
     }
+
+    /* ── Check marks ──────────────────────────────── */
     .check::before {
       content: '✓';
       color: #C9A96E;
@@ -339,8 +292,12 @@
       border-color: rgba(201,169,110,0.25);
       background: rgba(18,15,10,0.97);
     }
-    .addon img { transition: transform 0.6s ease; }
-    .addon:hover img { transform: scale(1.05); }
+    .addon img {
+      transition: transform 0.6s ease;
+    }
+    .addon:hover img {
+      transform: scale(1.05);
+    }
 
     /* ── Process steps ────────────────────────────── */
     .step-num {
@@ -361,92 +318,16 @@
     }
 
     /* ── Gallery ──────────────────────────────────── */
-    .gallery-item { overflow: hidden; }
+    .gallery-item {
+      overflow: hidden;
+    }
     .gallery-item img {
       transition: transform 0.6s ease, filter 0.4s ease;
       filter: brightness(0.88);
     }
-    .gallery-item:hover img { transform: scale(1.06); filter: brightness(1); }
-
-    /* ── Review ticker ────────────────────────────── */
-    .review-ticker-wrap {
-      overflow: hidden;
-      position: relative;
-    }
-    .review-ticker-wrap::before, .review-ticker-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 140px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .review-ticker-wrap::before {
-      left: 0;
-      background: linear-gradient(to right, #060608, transparent);
-    }
-    .review-ticker-wrap::after {
-      right: 0;
-      background: linear-gradient(to left, #060608, transparent);
-    }
-    .review-ticker-track {
-      display: flex;
-      width: max-content;
-      animation: review-scroll 50s linear infinite;
-    }
-    .review-ticker-track:hover { animation-play-state: paused; }
-    @keyframes review-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .rtick {
-      width: 340px;
-      flex-shrink: 0;
-      background: linear-gradient(160deg, rgba(22,22,25,0.92) 0%, rgba(10,10,12,0.98) 100%);
-      border: 1px solid rgba(255,255,255,0.055);
-      padding: 26px 24px 22px;
-      margin: 0 8px;
-      transition: border-color 0.3s ease;
-    }
-    .rtick:hover { border-color: rgba(201,169,110,0.22); }
-    .rtick-stars { color: #C9A96E; letter-spacing: 2px; font-size: 0.8rem; }
-    .rtick-quote {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 3.2rem;
-      line-height: 0.65;
-      color: rgba(201,169,110,0.1);
-      font-weight: 900;
-      display: block;
-      margin-bottom: 6px;
-    }
-    .rtick-text {
-      font-family: "Barlow", sans-serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: 0.88rem;
-      color: rgba(242,240,236,0.68);
-      line-height: 1.62;
-      margin-bottom: 16px;
-    }
-    .rtick-rule {
-      height: 1px;
-      background: linear-gradient(90deg, #C9A96E, transparent);
-      width: 32px;
-      margin-bottom: 12px;
-    }
-    .rtick-name {
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 700;
-      font-size: 0.76rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #C9A96E;
-    }
-    .rtick-meta {
-      font-family: "Barlow", sans-serif;
-      font-size: 0.68rem;
-      color: #666672;
-      margin-top: 2px;
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1);
     }
 
     /* ── CTA section ──────────────────────────────── */
@@ -456,7 +337,12 @@
       background-position: center;
     }
     .cta-scrim {
-      background: linear-gradient(100deg, rgba(6,6,8,0.97) 0%, rgba(6,6,8,0.88) 45%, rgba(6,6,8,0.62) 100%);
+      background: linear-gradient(
+        100deg,
+        rgba(6,6,8,0.97) 0%,
+        rgba(6,6,8,0.88) 45%,
+        rgba(6,6,8,0.62) 100%
+      );
     }
 
     /* ── Buttons ──────────────────────────────────── */
@@ -470,8 +356,6 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 14px 36px;
-      cursor: pointer;
-      border: none;
       transition: background 0.28s ease, transform 0.25s ease, box-shadow 0.28s ease;
     }
     .btn-gold:hover {
@@ -489,109 +373,11 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       padding: 14px 36px;
-      cursor: pointer;
-      background: transparent;
       transition: border-color 0.28s ease, background 0.28s ease;
     }
     .btn-ghost:hover {
       border-color: #C9A96E;
       background: rgba(201,169,110,0.07);
-    }
-
-    /* ── Booking Modal ────────────────────────────── */
-    #booking-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    #booking-modal.is-open {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(6,6,8,0.93);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-    .modal-box {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 520px;
-      margin: 16px;
-      background: #0f0f12;
-      border: 1px solid rgba(255,255,255,0.06);
-      overflow-y: auto;
-      max-height: 92vh;
-    }
-    .modal-box::-webkit-scrollbar { width: 4px; }
-    .modal-box::-webkit-scrollbar-track { background: #0f0f12; }
-    .modal-box::-webkit-scrollbar-thumb { background: #2a2a2e; border-radius: 2px; }
-    .modal-header {
-      padding: 32px 32px 0;
-      position: sticky;
-      top: 0;
-      background: #0f0f12;
-      z-index: 2;
-    }
-    .modal-body { padding: 20px 32px 32px; }
-    .modal-close-btn {
-      position: absolute;
-      top: 18px; right: 20px;
-      background: none; border: none;
-      color: #666672;
-      font-size: 1.6rem;
-      line-height: 1;
-      cursor: pointer;
-      transition: color 0.2s ease;
-      font-family: "Barlow", sans-serif;
-      padding: 4px 8px;
-    }
-    .modal-close-btn:hover { color: #F2F0EC; }
-    .form-row { margin-bottom: 16px; }
-    .form-label {
-      display: block;
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 700;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #666672;
-      margin-bottom: 8px;
-    }
-    .form-input {
-      width: 100%;
-      background: rgba(30,30,34,0.8);
-      border: 1px solid rgba(255,255,255,0.07);
-      color: #F2F0EC;
-      font-family: "Barlow", sans-serif;
-      font-weight: 300;
-      font-size: 0.9rem;
-      padding: 12px 16px;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-      transition: border-color 0.25s ease, background 0.25s ease;
-    }
-    .form-input:focus {
-      border-color: rgba(201,169,110,0.45);
-      background: rgba(22,22,25,0.95);
-    }
-    .form-input::placeholder { color: rgba(102,102,114,0.55); }
-    select.form-input { cursor: pointer; }
-    select.form-input option { background: #161619; color: #F2F0EC; }
-    textarea.form-input { resize: vertical; min-height: 88px; }
-    .form-success {
-      text-align: center;
-      padding: 40px 24px;
     }
 
     /* ── Scroll reveal ────────────────────────────── */
@@ -600,13 +386,83 @@
       transform: translateY(28px);
       transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
     }
-    .reveal.on { opacity: 1; transform: translateY(0); }
+    .reveal.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── Scrollbar ────────────────────────────────── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #060608; }
     ::-webkit-scrollbar-thumb { background: #2a2a2e; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #C9A96E; }
+
+    /* ── Marquee (stats + reviews) ───────────────────── */
+    .marquee-track {
+      display: flex;
+      flex-wrap: nowrap;
+      will-change: transform;
+    }
+    .marquee-viewport {
+      overflow: hidden;
+      width: 100%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    /* ── Stat pill ────────────────────────────────────── */
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 52px;
+      white-space: nowrap;
+    }
+    .stat-pill-divider {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(201,169,110,0.35);
+      flex-shrink: 0;
+    }
+
+    /* ── Review card ──────────────────────────────────── */
+    .review-card {
+      width: 300px;
+      flex-shrink: 0;
+      margin: 0 14px;
+      background: linear-gradient(160deg, rgba(22,22,25,0.9) 0%, rgba(10,10,12,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.055);
+      padding: 24px;
+    }
+    .review-stars {
+      color: #C9A96E;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .review-text {
+      font-family: "Barlow", sans-serif;
+      font-weight: 300;
+      font-size: 0.88rem;
+      color: rgba(242,240,236,0.75);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .review-author {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #C9A96E;
+    }
+    .review-source {
+      font-family: "Barlow", sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 2px;
+    }
   </style>
 </head>
 
@@ -619,15 +475,15 @@
   <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between" id="nav-inner">
 
     <a href="#home" class="font-display text-lg md:text-xl tracking-widest text-white">
-      GT AUTO <span class="gold-text">DETAIL SUPPLY</span>
+      MEZA <span class="gold-text">DETAIL</span>
     </a>
 
     <!-- Desktop links -->
     <div class="hidden md:flex items-center gap-8 text-sm">
-      <a href="#packages"  class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">Services</a>
-      <a href="#process"   class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">How It Works</a>
-      <a href="#reviews"   class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">Reviews</a>
-      <button onclick="openModal()" class="btn-gold text-sm px-6 py-2.5">Book Now</button>
+      <a href="#packages" class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">Packages</a>
+      <a href="#process"  class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">Process</a>
+      <a href="#guarantee" class="font-body font-500 text-muted hover:text-white transition-colors tracking-wide">Guarantee</a>
+      <a href="#contact" class="btn-gold text-sm px-6 py-2.5">Book Now</a>
     </div>
 
     <!-- Mobile toggle -->
@@ -645,10 +501,10 @@
 <!-- ── Mobile menu ── -->
 <div id="mob-menu" class="fixed inset-0 bg-ink/96 backdrop-blur-2xl z-40 flex flex-col items-center justify-center gap-8
      opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
-  <a href="#packages"  class="mob-link display text-5xl text-white">SERVICES</a>
-  <a href="#process"   class="mob-link display text-5xl text-white">HOW IT WORKS</a>
-  <a href="#reviews"   class="mob-link display text-5xl text-white">REVIEWS</a>
-  <button onclick="openModal(); closeMobMenu();" class="btn-gold mt-4 text-base px-14 py-4">Book Now</button>
+  <a href="#packages" class="mob-link display text-5xl text-white">PACKAGES</a>
+  <a href="#process"  class="mob-link display text-5xl text-white">PROCESS</a>
+  <a href="#guarantee" class="mob-link display text-5xl text-white">GUARANTEE</a>
+  <a href="#contact" class="btn-gold mt-4 text-base px-14 py-4">Book Now</a>
 </div>
 
 
@@ -658,93 +514,100 @@
 <section id="home" class="relative w-full min-h-screen flex items-end overflow-hidden hero-img">
   <div class="absolute inset-0 hero-vignette"></div>
 
+  <!-- Ambient light orbs -->
   <div class="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full
        bg-gold/5 blur-[100px] pointer-events-none"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full pb-24 md:pb-32">
+    <!-- Eyebrow -->
     <div class="flex items-center gap-3 mb-5">
       <div class="w-10 h-px" style="background:#C9A96E;"></div>
-      <span class="label text-gold">El Cajon's Professional Detailing Experts</span>
+      <span class="label text-gold">Chula Vista's Mobile Detailing Studio</span>
     </div>
 
+    <!-- Main headline -->
     <h1 class="display text-white mb-5"
         style="font-size: clamp(3.8rem, 11vw, 9.5rem);">
       YOUR CAR<br>
-      DESERVES BETTER<br>
-      <span class="gold-text">THAN AVERAGE.</span>
+      HAS 2,000<br>
+      <span class="gold-text">SWIRL MARKS.</span>
     </h1>
 
     <p class="font-body font-300 text-off-white/75 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
-      El Cajon's only source for professional-grade detailing products — and the expert hands
-      to use them. We've been serving detailers and car owners across east county for over 6 years.
+      Every automated wash adds more. We remove them —
+      then protect what's left. Done at your location. Done right.
     </p>
 
     <div class="flex flex-wrap gap-4">
-      <button onclick="openModal()" class="btn-gold">Book a Detail</button>
-      <a href="#packages" class="btn-ghost">See Our Services</a>
+      <a href="#packages" class="btn-gold">See My Options</a>
+      <a href="#proof"    class="btn-ghost">See the Results</a>
     </div>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════
-     STATS TICKER (infinite marquee)
+     STATS STRIP — MARQUEE
 ══════════════════════════════════════ -->
-<div class="ticker-wrap w-full py-0">
-  <div class="ticker-track" id="ticker-track">
+<div class="stat-strip w-full py-5">
+  <div class="marquee-viewport">
+    <div class="marquee-track marquee-track--stats" id="marquee-stats">
 
-    <!-- ── Set 1 ── -->
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">4.7 ★</div><div class="ticker-lbl">Google Rating</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">29+</div><div class="ticker-lbl">Verified Reviews</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">6+</div><div class="ticker-lbl">Years in El Cajon</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">PRO</div><div class="ticker-lbl">Grade Products</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">FULL</div><div class="ticker-lbl">Detailing Services</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">EAST</div><div class="ticker-lbl">County's Best Shop</div></div>
-    </div>
+      <!-- SET 1 -->
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">500+</div>
+        <div class="label text-muted" style="font-size:0.62rem;">Vehicles Restored</div>
+        <div class="stat-pill-divider"></div>
+      </div>
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">5.0 ★</div>
+        <div class="label text-muted" style="font-size:0.62rem;">Google Rating</div>
+        <div class="stat-pill-divider"></div>
+      </div>
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">100%</div>
+        <div class="label text-muted" style="font-size:0.62rem;">Mobile — We Come to You</div>
+        <div class="stat-pill-divider"></div>
+      </div>
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">48 HR</div>
+        <div class="label text-muted" style="font-size:0.62rem;">Avg. Booking Window</div>
+        <div class="stat-pill-divider"></div>
+      </div>
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">AUTO · AIRCRAFT · BOAT</div>
+        <div class="label text-muted" style="font-size:0.62rem;">We Detail It All</div>
+        <div class="stat-pill-divider"></div>
+      </div>
 
-    <!-- ── Set 2 (duplicate for seamless loop) ── -->
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">4.7 ★</div><div class="ticker-lbl">Google Rating</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">29+</div><div class="ticker-lbl">Verified Reviews</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">6+</div><div class="ticker-lbl">Years in El Cajon</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">PRO</div><div class="ticker-lbl">Grade Products</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">FULL</div><div class="ticker-lbl">Detailing Services</div></div>
-    </div>
-    <div class="ticker-item">
-      <span class="ticker-dot"></span>
-      <div><div class="ticker-val">EAST</div><div class="ticker-lbl">County's Best Shop</div></div>
-    </div>
+      <!-- SET 2 — exact duplicate for seamless loop -->
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">500+</div>
+        <div class="label text-muted" style="font-size:0.62rem;">Vehicles Restored</div>
+        <div class="stat-pill-divider"></div>
+      </div>
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">5.0 ★</div>
+        <div class="label text-muted" style="font-size:0.62rem;">Google Rating</div>
+        <div class="stat-pill-divider"></div>
+      </div>
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">100%</div>
+        <div class="label text-muted" style="font-size:0.62rem;">Mobile — We Come to You</div>
+        <div class="stat-pill-divider"></div>
+      </div>
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">48 HR</div>
+        <div class="label text-muted" style="font-size:0.62rem;">Avg. Booking Window</div>
+        <div class="stat-pill-divider"></div>
+      </div>
+      <div class="stat-pill">
+        <div class="display text-3xl text-gold">AUTO · AIRCRAFT · BOAT</div>
+        <div class="label text-muted" style="font-size:0.62rem;">We Detail It All</div>
+        <div class="stat-pill-divider"></div>
+      </div>
 
+    </div>
   </div>
 </div>
 
@@ -755,19 +618,19 @@
 <section id="proof" class="w-full py-24 md:py-32 px-4 bg-ink scroll-mt-20">
   <div class="max-w-6xl mx-auto">
 
+    <!-- Heading -->
     <div class="text-center mb-14 reveal">
-      <div class="label text-gold mb-3">The GT Difference</div>
+      <div class="label text-gold mb-3">Results Don't Lie</div>
       <h2 class="display text-white" style="font-size: clamp(2.8rem, 7vw, 6rem);">
-        PROFESSIONAL RESULTS.<br><span class="gold-text">EVERY SINGLE TIME.</span>
+        ONE SESSION.<br><span class="gold-text">ZERO SWIRLS.</span>
       </h2>
       <p class="font-body font-300 text-muted mt-5 max-w-lg mx-auto text-lg leading-relaxed">
-        That left side? What happens when the wrong products meet the wrong technique.
-        The right side? What happens when you use professional-grade supplies and someone
-        who actually knows how to use them.
+        That left side? 12 months of automated washes — each one grinding tiny
+        scratches into your clear coat. The right side is what we leave behind.
       </p>
     </div>
 
-    <!-- Before / After drag slider -->
+    <!-- Before / After interactive drag slider -->
     <div class="max-w-4xl mx-auto reveal">
       <div class="slider-wrap" id="ba-wrap">
         <!-- BASE: after image (clean paint) — full width, sits behind everything -->
@@ -795,7 +658,7 @@
         <div class="slider-hint" id="ba-hint">← DRAG TO COMPARE →</div>
       </div>
       <p class="font-body text-xs text-muted text-center mt-3">
-        Real client vehicle · GT Auto Detail Supply · El Cajon, CA
+        Real client vehicle · Single-stage paint correction · Chula Vista, CA
       </p>
     </div>
 
@@ -805,21 +668,21 @@
         <div class="label text-gold mb-3">Clay Bar</div>
         <div class="display text-white text-2xl mb-3">DECONTAMINATION</div>
         <p class="font-body font-300 text-muted text-sm leading-relaxed">
-          Removes brake dust, iron fallout, and bonded contamination your $12 wash was grinding into the paint.
+          Removes brake dust, iron fallout, and bonded contamination your $12 wash can't touch.
         </p>
       </div>
       <div class="bg-ink p-8 text-center" style="border-left:1px solid rgba(255,255,255,0.04); border-right:1px solid rgba(255,255,255,0.04);">
         <div class="label text-gold mb-3">Machine Polish</div>
         <div class="display text-white text-2xl mb-3">SWIRL REMOVAL</div>
         <p class="font-body font-300 text-muted text-sm leading-relaxed">
-          Eliminates 70–90% of swirl marks, buffer trails, and light scratches. Professional technique. Professional results.
+          Eliminates 70–90% of swirl marks, buffer trails, and light scratches from daily use.
         </p>
       </div>
       <div class="bg-ink p-8 text-center">
-        <div class="label text-gold mb-3">Pro-Grade Products</div>
-        <div class="display text-white text-2xl mb-3">SEALED & PROTECTED</div>
+        <div class="label text-gold mb-3">Sealed Finish</div>
+        <div class="display text-white text-2xl mb-3">LASTING PROTECTION</div>
         <p class="font-body font-300 text-muted text-sm leading-relaxed">
-          We stock and use the same professional-grade products trusted by detailers worldwide. Not the stuff off the Walmart shelf.
+          Protected with sealant or ceramic so the result holds — not just for a week.
         </p>
       </div>
     </div>
@@ -829,36 +692,35 @@
 
 
 <!-- ══════════════════════════════════════
-     SERVICES / PACKAGES
+     PACKAGES
 ══════════════════════════════════════ -->
 <section id="packages" class="w-full py-24 md:py-32 px-4 bg-carbon scroll-mt-20">
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-16 reveal">
-      <div class="label text-gold mb-3">Choose Your Service</div>
+      <div class="label text-gold mb-3">Choose Your Level</div>
       <h2 class="display text-white" style="font-size: clamp(2.8rem, 7vw, 6rem);">
         WHAT DOES YOUR<br><span class="gold-text">CAR NEED?</span>
       </h2>
       <p class="font-body font-300 text-muted mt-5 max-w-md mx-auto text-lg">
-        Every service is done by hand, with professional-grade products. No shortcuts.
+        Every package is done by hand, at your address, on your schedule.
+        No rushing. No shortcuts.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <!-- Tier 1: The Essential -->
+      <!-- ── Tier 1: The Commuter ── -->
       <div class="pkg reveal">
         <div class="overflow-hidden" style="height:220px;">
-          <!-- Replace with actual service photo -->
-          <img src="The%20Commuter.png" alt="GT Essential Detail Package"
-               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-               onerror="this.parentElement.style.background='#161619'">
+          <img src="The%20Commuter.png" alt="The Commuter Package"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
         </div>
         <div class="p-8">
           <div class="label text-muted mb-2">Entry Level</div>
-          <h3 class="display text-white text-3xl mb-2">THE ESSENTIAL</h3>
+          <h3 class="display text-white text-3xl mb-2">THE COMMUTER</h3>
           <p class="font-body font-300 text-muted text-sm leading-relaxed mb-6">
-            For the car that needs a reset. A proper, professional clean — inside and out — done right.
+            For the daily driver that deserves more than a $12 tunnel wash that's been scratching your paint since day one.
           </p>
           <div class="gold-rule-left mb-6" style="width: 48px;"></div>
           <ul class="space-y-3 mb-8 font-body text-sm text-off-white/80">
@@ -867,85 +729,80 @@
             <li class="check">Interior vacuum &amp; surface wipe-down</li>
             <li class="check">Glass cleaning — interior &amp; exterior</li>
             <li class="check">Tire dressing &amp; door jamb wipe</li>
-            <li class="check">Interior scenting</li>
           </ul>
           <div class="mb-6">
-            <div class="display text-white text-4xl">From $89</div>
+            <div class="display text-white text-4xl">$149</div>
             <div class="font-body text-xs text-muted mt-1">Sedan / Standard SUV — oversize quoted</div>
           </div>
-          <button onclick="openModal()" class="btn-ghost block text-center w-full">Book the Essential</button>
+          <a href="#contact" class="btn-ghost block text-center w-full">Book the Commuter</a>
         </div>
       </div>
 
-      <!-- Tier 2: The Deep Clean (Most Popular) -->
+      <!-- ── Tier 2: The New Car Reset ── -->
       <div class="pkg pkg-hero reveal" style="transition-delay:0.1s;">
         <div class="pkg-featured-badge">Most Popular</div>
         <div class="overflow-hidden" style="height:220px;">
-          <!-- Replace with actual service photo -->
-          <img src="Action%20Shot.png" alt="GT Deep Clean Package"
-               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-               onerror="this.parentElement.style.background='#161619'">
+          <img src="Action%20Shot.png" alt="The New Car Reset"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
         </div>
         <div class="p-8">
-          <div class="label text-gold mb-2">Full Detail</div>
-          <h3 class="display text-white text-3xl mb-2">THE DEEP CLEAN</h3>
+          <div class="label text-gold mb-2">Full Correction</div>
+          <h3 class="display text-white text-3xl mb-2">THE NEW CAR RESET</h3>
           <p class="font-body font-300 text-muted text-sm leading-relaxed mb-6">
-            Your car leaves looking the way it did the day you drove it off the lot — and smelling better.
+            Looks factory-fresh when we're done. The last thing your paint needs before the damage compounds further.
           </p>
           <div class="gold-rule-left mb-6" style="width: 48px;"></div>
           <ul class="space-y-3 mb-8 font-body text-sm text-off-white/80">
-            <li class="check">Everything in The Essential</li>
+            <li class="check">Everything in The Commuter</li>
             <li class="check">Clay bar decontamination</li>
-            <li class="check">Machine polish — removes 70–90% of swirl marks</li>
-            <li class="check">Interior steam clean</li>
-            <li class="check">Seat shampooing</li>
+            <li class="check">Single-stage machine polish — removes swirls</li>
+            <li class="check">Interior deep clean + leather conditioning</li>
             <li class="check">Engine bay wipe-down</li>
+            <li class="check">UV sealant — 6 months of protection</li>
           </ul>
           <div class="mb-6">
-            <div class="display text-white text-4xl">From $249</div>
+            <div class="display text-white text-4xl">$349</div>
             <div class="font-body text-xs text-muted mt-1">Sedan / Standard SUV — oversize quoted</div>
           </div>
-          <button onclick="openModal()" class="btn-gold block text-center w-full">Book the Deep Clean</button>
+          <a href="#contact" class="btn-gold block text-center w-full">Book the Reset</a>
         </div>
       </div>
 
-      <!-- Tier 3: The Full Restoration -->
+      <!-- ── Tier 3: The Asset Protector ── -->
       <div class="pkg reveal" style="transition-delay:0.2s;">
         <div class="overflow-hidden" style="height:220px;">
-          <!-- Replace with actual service photo -->
-          <img src="Asset%20Protector.png" alt="GT Full Restoration Package"
-               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-               onerror="this.parentElement.style.background='#161619'">
+          <img src="Asset%20Protector.png" alt="The Asset Protector"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
         </div>
         <div class="p-8">
           <div class="label text-muted mb-2">Full Protection</div>
-          <h3 class="display text-white text-3xl mb-2">THE RESTORATION</h3>
+          <h3 class="display text-white text-3xl mb-2">THE ASSET PROTECTOR</h3>
           <p class="font-body font-300 text-muted text-sm leading-relaxed mb-6">
-            For vehicles worth protecting. Corrected, sealed, and ready for whatever hits next.
+            For cars worth protecting. This is the one you do right — once — and maintain.
           </p>
           <div class="gold-rule-left mb-6" style="width: 48px;"></div>
           <ul class="space-y-3 mb-8 font-body text-sm text-off-white/80">
-            <li class="check">Everything in The Deep Clean</li>
-            <li class="check">Multi-stage paint correction</li>
+            <li class="check">Everything in The New Car Reset</li>
+            <li class="check">Multi-stage correction — removes 80–90% of defects</li>
             <li class="check">Ceramic coating — 2-year protection</li>
-            <li class="check">Headlight restoration &amp; polish</li>
-            <li class="check">Exhaust tip polish</li>
-            <li class="check">Window tinting consultation included</li>
+            <li class="check">PPF consultation included</li>
+            <li class="check">Full interior extraction &amp; ozone treatment</li>
+            <li class="check">Priority 48-hour booking window</li>
           </ul>
           <div class="mb-6">
-            <div class="display text-white text-4xl">Quoted</div>
-            <div class="font-body text-xs text-muted mt-1">Priced by vehicle — call us for a quote</div>
+            <div class="display text-white text-4xl">$849+</div>
+            <div class="font-body text-xs text-muted mt-1">Quoted by vehicle — no surprises</div>
           </div>
-          <button onclick="openModal()" class="btn-ghost block text-center w-full">Request a Quote</button>
+          <a href="#contact" class="btn-ghost block text-center w-full">Request a Quote</a>
         </div>
       </div>
 
     </div>
 
-    <!-- Value strip -->
+    <!-- Value reassurance strip -->
     <div class="mt-10 p-6 reveal" style="background:rgba(201,169,110,0.04); border:1px solid rgba(201,169,110,0.1);">
       <div class="display text-center text-white text-xl md:text-2xl">
-        ALL SERVICES INCLUDE: PRO-GRADE PRODUCTS · 100% SATISFACTION GUARANTEE · NO HIDDEN FEES
+        ALL PACKAGES INCLUDE: MOBILE SERVICE · 100% SATISFACTION GUARANTEE · NO HIDDEN FEES
       </div>
     </div>
 
@@ -960,7 +817,7 @@
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-12 reveal">
-      <div class="label text-gold mb-3">Enhance Your Service</div>
+      <div class="label text-gold mb-3">Enhance Your Package</div>
       <h2 class="display text-white" style="font-size: clamp(2rem, 5vw, 4rem);">
         ADD-ON SERVICES
       </h2>
@@ -970,26 +827,24 @@
 
       <!-- Engine Bay -->
       <div class="addon">
-        <div style="height:180px; overflow:hidden; background:#161619;">
+        <div style="height:180px; overflow:hidden;">
           <img src="Engine%20Bay%20Detail.png" alt="Engine Bay Detail"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'">
+               class="w-full h-full object-cover">
         </div>
         <div class="p-5">
           <div class="display text-white text-lg mb-2">ENGINE BAY</div>
           <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
             Degreased, detailed, dressed. Factory-clean under the hood.
           </p>
-          <div class="display text-gold text-2xl">From $65</div>
+          <div class="display text-gold text-2xl">From $75</div>
         </div>
       </div>
 
       <!-- Interior Extraction -->
       <div class="addon">
-        <div style="height:180px; overflow:hidden; background:#161619;">
+        <div style="height:180px; overflow:hidden;">
           <img src="Interior%20Reset.png" alt="Interior Extraction"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'">
+               class="w-full h-full object-cover">
         </div>
         <div class="p-5">
           <div class="display text-white text-lg mb-2">INTERIOR EXTRACTION</div>
@@ -1002,15 +857,14 @@
 
       <!-- Headlight Restoration -->
       <div class="addon">
-        <div style="height:180px; overflow:hidden; background:#161619;">
+        <div style="height:180px; overflow:hidden;">
           <img src="headlight.png" alt="Headlight Restoration"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'">
+               class="w-full h-full object-cover" style="object-position: center center;">
         </div>
         <div class="p-5">
           <div class="display text-white text-lg mb-2">HEADLIGHT RESTORE</div>
           <p class="font-body font-300 text-muted text-sm leading-relaxed mb-4">
-            Wet sand, compound, seal. Crystal-clear lenses — not the yellow haze you've been driving with.
+            Wet sand, compound, seal. Crystal-clear lenses — not the yellow haze you're driving with now.
           </p>
           <div class="display text-gold text-2xl">From $60</div>
         </div>
@@ -1018,10 +872,9 @@
 
       <!-- Ozone Treatment -->
       <div class="addon">
-        <div style="height:180px; overflow:hidden; background:#161619;">
+        <div style="height:180px; overflow:hidden;">
           <img src="ozone.png" alt="Ozone Odor Elimination"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'">
+               class="w-full h-full object-cover" style="object-position: center center;">
         </div>
         <div class="p-5">
           <div class="display text-white text-lg mb-2">OZONE TREATMENT</div>
@@ -1038,7 +891,7 @@
 
 
 <!-- ══════════════════════════════════════
-     HOW IT WORKS
+     PROCESS
 ══════════════════════════════════════ -->
 <section id="process" class="w-full py-24 md:py-32 px-4 bg-carbon scroll-mt-20"
          style="border-top:1px solid rgba(255,255,255,0.04);">
@@ -1047,7 +900,7 @@
     <div class="text-center mb-16 reveal">
       <div class="label text-gold mb-3">How It Works</div>
       <h2 class="display text-white" style="font-size: clamp(2.8rem, 7vw, 6rem);">
-        THREE STEPS.<br><span class="gold-text">ZERO HEADACHES.</span>
+        THREE STEPS.<br><span class="gold-text">ZERO EFFORT ON YOUR PART.</span>
       </h2>
     </div>
 
@@ -1055,18 +908,17 @@
 
       <!-- Step 1 -->
       <div class="relative reveal">
-        <div class="overflow-hidden mb-6" style="height:260px; background:#161619;">
-          <img src="Step1-Book.png" alt="Book your appointment"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'">
+        <div class="overflow-hidden mb-6" style="height:260px;">
+          <img src="Step1-Book.png" alt="Book online in 60 seconds"
+               class="w-full h-full object-cover">
         </div>
         <div class="relative pl-4">
           <div class="step-num">01</div>
           <div class="relative z-10">
             <div class="label text-gold mb-2">Step One</div>
-            <h3 class="display text-white text-2xl mb-3">BOOK YOUR SPOT</h3>
+            <h3 class="display text-white text-2xl mb-3">BOOK IN 60 SECONDS</h3>
             <p class="font-body font-300 text-muted text-sm leading-relaxed">
-              Fill out our quick form or give us a call. We'll confirm your appointment within a few hours. No back-and-forth.
+              Pick your package. Pick your time. We confirm within the hour. No phone tag.
             </p>
           </div>
         </div>
@@ -1074,18 +926,17 @@
 
       <!-- Step 2 -->
       <div class="relative reveal" style="transition-delay:0.1s;">
-        <div class="overflow-hidden mb-6" style="height:260px; background:#161619;">
-          <img src="Step2-Arrive.png" alt="Bring your vehicle in"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'">
+        <div class="overflow-hidden mb-6" style="height:260px;">
+          <img src="Step2-Arrive.png" alt="We come to you"
+               class="w-full h-full object-cover">
         </div>
         <div class="relative pl-4">
           <div class="step-num">02</div>
           <div class="relative z-10">
             <div class="label text-gold mb-2">Step Two</div>
-            <h3 class="display text-white text-2xl mb-3">BRING IT IN</h3>
+            <h3 class="display text-white text-2xl mb-3">WE COME TO YOU</h3>
             <p class="font-body font-300 text-muted text-sm leading-relaxed">
-              Drop your vehicle at our El Cajon location. We'll walk you through what we're doing and why before we start.
+              Fully-equipped van arrives at your home or office. You don't move, you don't wait in a lobby.
             </p>
           </div>
         </div>
@@ -1093,10 +944,9 @@
 
       <!-- Step 3 -->
       <div class="relative reveal" style="transition-delay:0.2s;">
-        <div class="overflow-hidden mb-6" style="height:260px; background:#161619;">
-          <img src="Step3-Clean.png" alt="We do the work"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'">
+        <div class="overflow-hidden mb-6" style="height:260px;">
+          <img src="Action%20Shot.png" alt="We do the work"
+               class="w-full h-full object-cover">
         </div>
         <div class="relative pl-4">
           <div class="step-num">03</div>
@@ -1104,7 +954,7 @@
             <div class="label text-gold mb-2">Step Three</div>
             <h3 class="display text-white text-2xl mb-3">WE DO THE WORK</h3>
             <p class="font-body font-300 text-muted text-sm leading-relaxed">
-              Every step done by hand with professional-grade products. You pick it up looking better than when you dropped it off. Guaranteed.
+              Every step done by hand. No rushing. You get the car back looking better than the day you bought it.
             </p>
           </div>
         </div>
@@ -1128,25 +978,25 @@
       <div>
         <div class="label text-muted mb-5">A note before you book</div>
         <h2 class="display text-white mb-8" style="font-size: clamp(2.8rem, 6vw, 5rem);">
-          WE ONLY TAKE<br>8 VEHICLES<br><span class="gold-text">PER WEEK.</span>
+          WE ONLY TAKE<br>LIMITED BOOKINGS<br><span class="gold-text">PER WEEK.</span>
         </h2>
         <p class="font-body font-300 text-muted leading-relaxed mb-5 text-lg">
-          That's not a scarcity tactic. We've been doing this for over 6 years because we refuse
-          to rush. Every car gets the same level of attention — whether it's a daily driver or
-          a collector car.
+          That's not a scarcity tactic. We'd rather do fewer cars right
+          than more cars wrong. Every vehicle gets the same attention
+          whether it's a Tesla or a Lamborghini.
         </p>
         <p class="font-body font-300 text-muted leading-relaxed mb-10">
-          If you're not completely satisfied before you drive off — we fix it on the spot,
-          or you owe us nothing. No fine print. No hoops. That's how we've kept customers
-          coming back for years.
+          And if you're not completely satisfied before we leave — we fix it
+          on the spot, or you owe us nothing. No fine print. No hoops.
         </p>
+        <!-- Guarantee badge -->
         <div class="flex items-start gap-5 p-6"
              style="background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15);">
           <div class="display text-gold leading-none" style="font-size:2.5rem;">✓</div>
           <div>
             <div class="display text-white text-xl mb-1">100% SATISFACTION OR IT'S FREE</div>
             <div class="font-body font-300 text-muted text-sm leading-relaxed">
-              Not happy? Tell us before you leave. We fix it on the spot or you don't pay. No questions asked.
+              Not happy? Tell us before we pack up. We fix it on the spot or you don't pay. No questions.
             </div>
           </div>
         </div>
@@ -1154,9 +1004,8 @@
 
       <!-- Image -->
       <div>
-        <img src="Guarantee-Image.png" alt="GT Auto Detail Supply precision work"
-             class="w-full object-cover" style="height:420px; background:#161619;"
-             onerror="this.style.background='#161619'">
+        <img src="Guarantee-Image.png" alt="Precision detailing"
+             class="w-full object-cover" style="height:420px;">
         <div class="gold-rule mt-0"></div>
       </div>
 
@@ -1179,45 +1028,39 @@
       </h2>
     </div>
 
+    <!-- Gallery grid — showcase hero full-width top -->
     <div class="gallery-item reveal mb-2">
-      <!-- Replace with GT's showcase photo -->
-      <img src="showcase.png" alt="GT Auto Detail Supply showcase work"
-           class="w-full object-cover" style="height:420px; object-position: center 25%; background:#161619;"
-           onerror="this.style.background='#161619'">
+      <img src="showcase.png" alt="BMW M5 paint correction result in studio"
+           class="w-full object-cover" style="height:420px; object-position: center 25%;">
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 reveal">
       <div class="gallery-item col-span-2">
-        <img src="Asset%20Protector.png" alt="GT Detail Work"
-             class="w-full object-cover" style="height:240px; background:#161619;"
-             onerror="this.style.background='#161619'">
+        <img src="Asset%20Protector.png" alt="Lamborghini detail"
+             class="w-full object-cover" style="height:240px;">
       </div>
       <div class="gallery-item">
-        <img src="Interior%20Reset.png" alt="GT Interior Detail"
-             class="w-full object-cover" style="height:240px; background:#161619;"
-             onerror="this.style.background='#161619'">
+        <img src="Interior%20Reset.png" alt="Interior restoration"
+             class="w-full object-cover" style="height:240px;">
       </div>
       <div class="gallery-item">
-        <img src="Engine%20Bay%20Detail.png" alt="GT Engine Detail"
-             class="w-full object-cover" style="height:240px; background:#161619;"
-             onerror="this.style.background='#161619'">
+        <img src="Engine%20Bay%20Detail.png" alt="Engine bay detail"
+             class="w-full object-cover" style="height:240px;">
       </div>
     </div>
 
+    <!-- Sub-gallery row -->
     <div class="grid grid-cols-3 gap-2 mt-2 reveal">
       <div class="gallery-item">
-        <img src="The%20Commuter.png" alt="GT Detail"
-             class="w-full object-cover" style="height:160px; background:#161619;"
-             onerror="this.style.background='#161619'">
+        <img src="The%20Commuter.png" alt="Daily driver detail"
+             class="w-full object-cover" style="height:160px;">
       </div>
       <div class="gallery-item">
-        <img src="Action%20Shot.png" alt="GT Polish"
-             class="w-full object-cover" style="height:160px; background:#161619;"
-             onerror="this.style.background='#161619'">
+        <img src="Action%20Shot.png" alt="Paint correction process"
+             class="w-full object-cover" style="height:160px;">
       </div>
       <div class="gallery-item">
-        <img src="Guarantee-Image.png" alt="GT Ceramic Coat"
-             class="w-full object-cover" style="height:160px; background:#161619;"
-             onerror="this.style.background='#161619'">
+        <img src="Guarantee-Image.png" alt="Luxury interior detail"
+             class="w-full object-cover" style="height:160px; object-position: center center;">
       </div>
     </div>
 
@@ -1226,152 +1069,133 @@
 
 
 <!-- ══════════════════════════════════════
-     REVIEWS
+     REVIEWS — MARQUEE
 ══════════════════════════════════════ -->
-<section id="reviews" class="w-full py-24 md:py-32 px-4 bg-ink scroll-mt-20"
-         style="border-top:1px solid rgba(255,255,255,0.04);">
-  <div class="max-w-6xl mx-auto">
+<section class="w-full py-20 bg-ink" style="border-top:1px solid rgba(255,255,255,0.04);">
 
-    <div class="text-center mb-14 reveal">
-      <div class="label text-gold mb-3">Real Customers. Real Results.</div>
-      <h2 class="display text-white" style="font-size: clamp(2.8rem, 7vw, 6rem);">
-        WHAT EL CAJON<br><span class="gold-text">IS SAYING.</span>
-      </h2>
-      <!-- Aggregate rating badge -->
-      <div class="flex items-center justify-center gap-4 mt-8">
-        <div class="display text-gold" style="font-size: clamp(2.5rem, 6vw, 4rem);">4.7</div>
-        <div>
-          <div class="review-stars">★★★★★</div>
-          <div class="label text-muted mt-1" style="font-size:0.58rem;">29 Google Reviews</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Review ticker (infinite horizontal scroll) -->
-    <div class="review-ticker-wrap w-full py-4">
-      <div class="review-ticker-track">
-
-        <!-- ── Set 1 ── -->
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">Walked in frustrated — couldn't wash my new BMW. Left with the right premium products and knowing exactly how to use them. I've never had my car look this good.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Ian K.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">Hands down the best one stop shop. Always stocked with the best products. Always extremely helpful, knowledgeable and willing to go the extra mile.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Chris J.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review · 1 month ago</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">Been coming here 5 years — they have never not taken care of me. Best place in east county for detailing supplies or service. They welcome everyone and love to help.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Josh P.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review · 1 month ago</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">My #1 spot for detail supplies. He's been in the business forever and knows everything. I can call him any time with a question and he never makes me feel like I'm bugging.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Lisa M.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">By far the nicest detail supply store in east county — if not all of San Diego. The owner always goes above and beyond to make sure my business stays running smoothly.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Skye W.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">Amazing customer service, premium products, and an owner who gives you the best knowledge on caring for your car. This is the place to visit. I will for sure be back.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Ben I.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Google Local Guide · 226 reviews</div>
-        </div>
-
-        <!-- ── Set 2 (duplicate for seamless loop) ── -->
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">Walked in frustrated — couldn't wash my new BMW. Left with the right premium products and knowing exactly how to use them. I've never had my car look this good.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Ian K.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">Hands down the best one stop shop. Always stocked with the best products. Always extremely helpful, knowledgeable and willing to go the extra mile.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Chris J.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review · 1 month ago</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">Been coming here 5 years — they have never not taken care of me. Best place in east county for detailing supplies or service. They welcome everyone and love to help.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Josh P.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review · 1 month ago</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">My #1 spot for detail supplies. He's been in the business forever and knows everything. I can call him any time with a question and he never makes me feel like I'm bugging.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Lisa M.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">By far the nicest detail supply store in east county — if not all of San Diego. The owner always goes above and beyond to make sure my business stays running smoothly.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Skye W.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Verified Google Review</div>
-        </div>
-
-        <div class="rtick">
-          <span class="rtick-quote">"</span>
-          <p class="rtick-text">Amazing customer service, premium products, and an owner who gives you the best knowledge on caring for your car. This is the place to visit. I will for sure be back.</p>
-          <div class="rtick-rule"></div>
-          <div class="rtick-name">Ben I.</div>
-          <div class="rtick-stars mt-1">★★★★★</div>
-          <div class="rtick-meta">Google Local Guide · 226 reviews</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Leave a review CTA -->
-    <div class="text-center mt-12 reveal">
-      <a href="https://maps.google.com/search/GT+Auto+Detail+Supply+El+Cajon" target="_blank" rel="noopener" class="btn-ghost">
-        Leave Us a Review
-      </a>
-    </div>
-
+  <div class="text-center mb-12 reveal px-4">
+    <div class="label text-gold mb-3">What Clients Say</div>
+    <h2 class="display text-white" style="font-size: clamp(2rem, 5vw, 4rem);">
+      REAL PEOPLE.<br><span class="gold-text">REAL RESULTS.</span>
+    </h2>
   </div>
+
+  <div class="marquee-viewport">
+    <div class="marquee-track marquee-track--reviews" id="marquee-reviews">
+
+      <!-- SET 1 — real Google reviews -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"The best team! They deserve more than 5 stars. I will always recommend them. Excellent work and super detailed — if you need someone to achieve your expectations on car detail don't hesitate and call them! You will not regret it!"</div>
+        <div class="review-author">Laura Mejia</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Amazing work! I was trying to find somebody who would make an amazing work on my car, don't regret calling them. They both so nice, fast working, would always recommend them!!"</div>
+        <div class="review-author">Mel</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Excellent service, they are the best leaving your car super clean and shining."</div>
+        <div class="review-author">Yaira Santiago</div>
+        <div class="review-source">Google Review · Local Guide · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"I recently had my car detailed by MD Meza Auto Detail and was really impressed with the results. The team was professional, showed up on time, and worked with clear attention to detail without rushing the job. The car felt much newer again — I'd definitely recommend them to anyone looking for reliable detailing work."</div>
+        <div class="review-author">Jack Vasquez</div>
+        <div class="review-source">Google Review · Local Guide · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Great customer service left my car like new!!"</div>
+        <div class="review-author">Sonia Torres</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Excellent service — the best price and speed. 100% recommended."</div>
+        <div class="review-author">Alcaraz Appliances</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"100% Recommended"</div>
+        <div class="review-author">Andres Isaac</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <!-- SET 2 — exact duplicate for seamless JS loop -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"The best team! They deserve more than 5 stars. I will always recommend them. Excellent work and super detailed — if you need someone to achieve your expectations on car detail don't hesitate and call them! You will not regret it!"</div>
+        <div class="review-author">Laura Mejia</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Amazing work! I was trying to find somebody who would make an amazing work on my car, don't regret calling them. They both so nice, fast working, would always recommend them!!"</div>
+        <div class="review-author">Mel</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Excellent service, they are the best leaving your car super clean and shining."</div>
+        <div class="review-author">Yaira Santiago</div>
+        <div class="review-source">Google Review · Local Guide · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"I recently had my car detailed by MD Meza Auto Detail and was really impressed with the results. The team was professional, showed up on time, and worked with clear attention to detail without rushing the job. The car felt much newer again — I'd definitely recommend them to anyone looking for reliable detailing work."</div>
+        <div class="review-author">Jack Vasquez</div>
+        <div class="review-source">Google Review · Local Guide · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Great customer service left my car like new!!"</div>
+        <div class="review-author">Sonia Torres</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Excellent service — the best price and speed. 100% recommended."</div>
+        <div class="review-author">Alcaraz Appliances</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"100% Recommended"</div>
+        <div class="review-author">Andres Isaac</div>
+        <div class="review-source">Google Review · Chula Vista</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Google badge -->
+  <div class="text-center mt-10 reveal px-4">
+    <div class="inline-flex items-center gap-3 px-6 py-3"
+         style="background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15);">
+      <span class="display text-gold text-2xl">5.0</span>
+      <span class="display text-white text-xl">★★★★★</span>
+      <span class="label text-muted" style="font-size:0.62rem;">on Google · 9 Reviews</span>
+    </div>
+  </div>
+
 </section>
 
 
@@ -1387,10 +1211,9 @@
       BOOK YOUR<br><span class="gold-text">DETAIL.</span>
     </h2>
     <p class="font-body font-300 text-off-white/70 text-xl mb-10 max-w-lg leading-relaxed">
-      Professional-grade products. Expert hands. 100% satisfaction or you don't pay.
-      Spots fill up fast — lock yours in now.
+      We come to you. You do nothing. Your car leaves looking better than the day you drove it off the lot.
     </p>
-    <button onclick="openModal()" class="btn-gold text-base px-14 py-5">Claim My Spot</button>
+    <a href="#contact" class="btn-gold text-base px-14 py-5">Claim My Spot</a>
   </div>
 </section>
 
@@ -1407,15 +1230,16 @@
       <!-- Brand -->
       <div>
         <div class="display text-white text-2xl tracking-widest mb-4">
-          GT AUTO <span class="gold-text">DETAIL SUPPLY</span>
+          MEZA <span class="gold-text">DETAIL</span>
         </div>
         <p class="font-body font-300 text-muted text-sm leading-relaxed max-w-xs">
-          El Cajon's professional detailing supply store and service center.
-          Pro-grade products. Expert results.
+          Chula Vista's mobile detailing studio. Professional-grade results at your driveway.
         </p>
+        <!-- Social placeholder -->
         <div class="flex gap-4 mt-6">
-          <a href="https://www.instagram.com/gtautodetailsupply" target="_blank" rel="noopener"
-             class="label text-muted hover:text-gold transition-colors">IG</a>
+          <a href="https://www.instagram.com/meza_autodetail" target="_blank" rel="noopener" class="label text-muted hover:text-gold transition-colors">IG</a>
+          <a href="#" class="label text-muted hover:text-gold transition-colors">FB</a>
+          <a href="#" class="label text-muted hover:text-gold transition-colors">TIKTOK</a>
         </div>
       </div>
 
@@ -1423,10 +1247,10 @@
       <div>
         <div class="label text-gold mb-5">Navigate</div>
         <ul class="space-y-3 font-body font-300 text-sm">
-          <li><a href="#packages"  class="text-muted hover:text-white transition-colors">Services</a></li>
+          <li><a href="#packages"  class="text-muted hover:text-white transition-colors">Packages</a></li>
           <li><a href="#process"   class="text-muted hover:text-white transition-colors">How It Works</a></li>
           <li><a href="#guarantee" class="text-muted hover:text-white transition-colors">Our Guarantee</a></li>
-          <li><a href="#reviews"   class="text-muted hover:text-white transition-colors">Reviews</a></li>
+          <li><a href="#proof"     class="text-muted hover:text-white transition-colors">See Results</a></li>
         </ul>
       </div>
 
@@ -1434,26 +1258,22 @@
       <div>
         <div class="label text-gold mb-5">Get in Touch</div>
         <div class="space-y-3 font-body font-300 text-sm text-muted">
-          <div><a href="tel:+17604194871" class="hover:text-white transition-colors">📞 (760) 419-4871</a></div>
-          <div>📍 1934 N Marshall Ave #104, El Cajon, CA 92020</div>
-          <div class="pt-1 text-xs leading-relaxed">
-            Mon 8:30AM–4:00PM<br>
-            Tue–Fri 8:00AM–4:00PM<br>
-            Sat 8:00AM–1:00PM<br>
-            Sun CLOSED
-          </div>
+          <div><a href="tel:+16195208772" class="hover:text-white transition-colors">📞 (619) 520-8772</a></div>
+          <div><a href="mailto:mezaautodetail@gmail.com" class="hover:text-white transition-colors">📧 mezaautodetail@gmail.com</a></div>
+          <div>📍 Serving Chula Vista &amp; surrounding areas</div>
         </div>
         <div class="mt-6">
-          <a href="tel:+17604194871" class="btn-gold text-sm">Call to Book</a>
+          <a href="tel:+16195208772" class="btn-gold text-sm">Call to Book</a>
         </div>
       </div>
 
     </div>
 
+    <!-- Bottom bar -->
     <div class="gold-rule mb-8"></div>
     <div class="flex flex-col md:flex-row justify-between items-center gap-3
          font-body font-300 text-xs text-muted">
-      <div>© 2025 GT Auto Detail Supply. All rights reserved.</div>
+      <div>© 2025 Meza Detail. All rights reserved.</div>
       <div>Website design by <span class="text-gold">Brechtland</span></div>
     </div>
 
@@ -1462,96 +1282,41 @@
 
 
 <!-- ══════════════════════════════════════
-     BOOKING MODAL
-══════════════════════════════════════ -->
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Book your appointment">
-
-  <!-- Backdrop -->
-  <div class="modal-backdrop" id="modal-backdrop"></div>
-
-  <!-- Modal box -->
-  <div class="modal-box">
-
-    <!-- Header -->
-    <div class="modal-header">
-      <button class="modal-close-btn" id="modal-close" aria-label="Close">×</button>
-      <div class="label text-gold mb-2">Let's Get Started</div>
-      <h2 class="display text-white mb-2" style="font-size: clamp(1.8rem, 4vw, 2.4rem);">
-        BOOK YOUR DETAIL
-      </h2>
-      <div class="gold-rule-left mb-5" style="width: 40px;"></div>
-    </div>
-
-    <!-- Form body -->
-    <div class="modal-body" id="modal-body">
-      <!-- IMPORTANT: Update action to your Formspree endpoint (https://formspree.io/f/YOURKEY) or backend URL -->
-      <form id="booking-form">
-
-        <div class="form-row">
-          <label class="form-label" for="f-name">Full Name *</label>
-          <input class="form-input" id="f-name" type="text" name="name"
-                 placeholder="John Smith" required autocomplete="name">
-        </div>
-
-        <div class="form-row">
-          <label class="form-label" for="f-phone">Phone Number *</label>
-          <input class="form-input" id="f-phone" type="tel" name="phone"
-                 placeholder="(760) 555-0123" required autocomplete="tel">
-        </div>
-
-        <div class="form-row">
-          <label class="form-label" for="f-email">Email Address</label>
-          <input class="form-input" id="f-email" type="email" name="email"
-                 placeholder="you@email.com" autocomplete="email">
-        </div>
-
-        <div class="form-row">
-          <label class="form-label" for="f-service">Service Interested In *</label>
-          <select class="form-input" id="f-service" name="service" required>
-            <option value="" disabled selected>Select a service...</option>
-            <option>The Essential (From $89)</option>
-            <option>The Deep Clean (From $249)</option>
-            <option>The Full Restoration (Quote)</option>
-            <option>Engine Bay Detail (From $65)</option>
-            <option>Headlight Restoration (From $55)</option>
-            <option>Exhaust Tip Polish (From $40)</option>
-            <option>Window Tinting (Quote)</option>
-            <option>Supply / Product Question</option>
-            <option>Not Sure — Help Me Decide</option>
-          </select>
-        </div>
-
-        <div class="form-row">
-          <label class="form-label" for="f-vehicle">Your Vehicle</label>
-          <input class="form-input" id="f-vehicle" type="text" name="vehicle"
-                 placeholder="e.g. 2022 BMW M4, Black">
-        </div>
-
-        <div class="form-row">
-          <label class="form-label" for="f-message">Anything Else? (Optional)</label>
-          <textarea class="form-input" id="f-message" name="message" rows="3"
-                    placeholder="Tell us about your car or what you need..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-gold w-full text-center py-4 text-base"
-                style="display:block; margin-top:8px;">
-          Request My Appointment
-        </button>
-
-        <p class="font-body text-xs text-muted text-center mt-4">
-          We'll call or text you within a few hours to confirm your spot.
-        </p>
-
-      </form>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════
      SCRIPTS
 ══════════════════════════════════════ -->
 <script>
+  // ── Marquee — requestAnimationFrame engine ───────
+  // Bulletproof: works offline, no CDN dependency.
+  // Each track must have exactly 2 identical sets of children.
+  // We scroll until pos === halfWidth, then snap back to 0 — seamless.
+  function initMarquee(trackId, pxPerFrame) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+    let pos = 0;
+    let paused = false;
+    const vp = track.closest('.marquee-viewport');
+    if (vp) {
+      vp.addEventListener('mouseenter', () => { paused = true;  });
+      vp.addEventListener('mouseleave', () => { paused = false; });
+    }
+    function step() {
+      if (!paused) {
+        const halfW = track.scrollWidth / 2;
+        pos += pxPerFrame;
+        if (pos >= halfW) pos -= halfW;
+        track.style.transform = 'translateX(-' + pos + 'px)';
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Wait for fonts + Tailwind to settle, then start
+  window.addEventListener('load', function() {
+    initMarquee('marquee-stats',   0.55);   // faster — short pills
+    initMarquee('marquee-reviews', 0.35);   // slower — longer cards
+  });
+
   // ── Nav shrink on scroll ─────────────────────────
   const nav = document.getElementById('nav');
   const navInner = document.getElementById('nav-inner');
@@ -1572,18 +1337,9 @@
   const icClose  = document.getElementById('ic-close');
   let   menuOpen = false;
 
-  function closeMobMenu() {
-    menuOpen = false;
-    mobMenu.style.opacity      = '0';
-    mobMenu.style.pointerEvents = 'none';
-    icOpen.classList.remove('hidden');
-    icClose.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-
   mobBtn.addEventListener('click', () => {
     menuOpen = !menuOpen;
-    mobMenu.style.opacity       = menuOpen ? '1' : '0';
+    mobMenu.style.opacity      = menuOpen ? '1' : '0';
     mobMenu.style.pointerEvents = menuOpen ? 'all' : 'none';
     icOpen.classList.toggle('hidden',  menuOpen);
     icClose.classList.toggle('hidden', !menuOpen);
@@ -1591,52 +1347,14 @@
   });
 
   document.querySelectorAll('.mob-link').forEach(link => {
-    link.addEventListener('click', closeMobMenu);
-  });
-
-  // ── Booking Modal ────────────────────────────────
-  const modal    = document.getElementById('booking-modal');
-  const modalBg  = document.getElementById('modal-backdrop');
-  const closeBtn = document.getElementById('modal-close');
-
-  function openModal() {
-    modal.classList.add('is-open');
-    document.body.classList.add('modal-open');
-  }
-  function closeModal() {
-    modal.classList.remove('is-open');
-    document.body.classList.remove('modal-open');
-  }
-
-  modalBg.addEventListener('click', closeModal);
-  closeBtn.addEventListener('click', closeModal);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-  // ── Form submission ──────────────────────────────
-  document.getElementById('booking-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('f-name').value || 'there';
-
-    document.getElementById('modal-body').innerHTML = `
-      <div class="form-success">
-        <div class="display text-gold mb-3" style="font-size:3.5rem; line-height:1;">✓</div>
-        <div class="display text-white text-3xl mb-4">GOT IT, ${name.split(' ')[0].toUpperCase()}.</div>
-        <p class="font-body font-300 text-muted leading-relaxed mb-6">
-          We'll call or text you within a few hours to confirm your appointment.
-          In the meantime, feel free to reach us directly at
-          <a href="tel:+17604194871" class="text-gold hover:text-gold-lt">(760) 419-4871</a>.
-        </p>
-        <button onclick="closeModal()" class="btn-gold px-10 py-4">Close</button>
-      </div>
-    `;
-
-    // ── TO ACTUALLY SUBMIT: uncomment and update endpoint below ──
-    // fetch('https://formspree.io/f/YOURKEY', {
-    //   method: 'POST',
-    //   body: new FormData(this),
-    //   headers: { 'Accept': 'application/json' }
-    // });
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobMenu.style.opacity       = '0';
+      mobMenu.style.pointerEvents = 'none';
+      icOpen.classList.remove('hidden');
+      icClose.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
   });
 
   // ── Before/After Drag Slider ─────────────────────
@@ -1686,12 +1404,12 @@
     }, { passive: true });
     window.addEventListener('touchend', () => { dragging = false; });
   })();
-
-  // ── Scroll reveal ────────────────────────────────
   const reveals = document.querySelectorAll('.reveal');
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('on');
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+      }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => ro.observe(el));
